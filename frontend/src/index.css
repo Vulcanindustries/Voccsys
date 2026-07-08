@@ -142,6 +142,43 @@ body::before {
     to { transform: translateX(-50%); }
 }
 
+/* Range input — industrial amber */
+.roi-range {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: #27272A;
+    outline: none;
+    border-radius: 0;
+    cursor: pointer;
+}
+.roi-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 22px;
+    background: #F59E0B;
+    border: 1px solid #09090B;
+    cursor: grab;
+    border-radius: 0;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+    transition: transform 120ms ease;
+}
+.roi-range::-webkit-slider-thumb:active { cursor: grabbing; transform: scaleY(1.1); }
+.roi-range::-moz-range-thumb {
+    width: 16px;
+    height: 22px;
+    background: #F59E0B;
+    border: 1px solid #09090B;
+    border-radius: 0;
+    cursor: grab;
+}
+.roi-range::-moz-range-track {
+    background: #27272A;
+    height: 4px;
+    border: none;
+}
+
 ::selection { background: var(--v-amber); color: #09090B; }
 
 @layer base {
