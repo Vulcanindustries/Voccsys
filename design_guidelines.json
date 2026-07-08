@@ -1,0 +1,120 @@
+{
+  "theme": "dark_industrial",
+  "typography": {
+    "headings": "Chivo, sans-serif",
+    "body": "IBM Plex Sans, sans-serif",
+    "logo": "Cabinet Grotesk, sans-serif",
+    "rules": [
+      "Use tracking-tighter for H1 (Hero/Main Heading) and H2.",
+      "Use uppercase tracking-[0.2em] for overlines and category labels.",
+      "CRITICAL: Do not use Inter or generic sans fonts for headings. The typography must convey technical authority and heavy engineering weight.",
+      "Variable weights: Use font-black for numbers/stats and font-medium for standard headings."
+    ]
+  },
+  "colors": {
+    "background": "#09090B",
+    "surface_primary": "#121214",
+    "surface_secondary": "#1A1A1D",
+    "border": "#27272A",
+    "brand_primary": "#F59E0B",
+    "brand_primary_hover": "#D97706",
+    "text_main": "#FAFAFA",
+    "text_muted": "#A1A1AA",
+    "rules": [
+      "High-Contrast Technical Authority: Deep graphite base paired with Pure White text for clarity and Industrial Amber/Orange for actions.",
+      "Never use pure black #000000 or pure grey. Always tint neutrals with a cool slate/blue undertone.",
+      "Use brand_primary (Amber) strictly for CTAs, active states, and to color the 'sponge balls' in the animation."
+    ]
+  },
+  "grids": {
+    "primary_layout": "Bento Grid Protocol (Mode A - Tetris Grid) for visual sections.",
+    "technical_layout": "High Density Grid (Mode B) for technical specifications and data metrics. Tight gaps (gap-4).",
+    "rules": [
+      "Mobile-First: Always start with grid-cols-1.",
+      "Grid Children MUST be direct children.",
+      "Expose the Skeleton: For specs and data, use a 'border-collapse' style technical look with visible 1px borders (border-border/40) between items."
+    ]
+  },
+  "layouts": {
+    "spacing": "Generous Spacing: Use p-8, p-12 for internal card paddings, and massive py-24 or py-32 for vertical section spacing.",
+    "alignment": "Left-align paragraphs, inputs, and dense content for readability. Only center hero text if structurally supported.",
+    "header": "MUST NOT be transparent. Use a solid background (bg-[#09090B]) with a hard 1px bottom border to preserve legibility and industrial rigidity.",
+    "sections": [
+      "Hero: Strong value proposition, overlay on industrial image.",
+      "Product Overview: Clean text, bold typography.",
+      "How It Works: Interactive/Animated visual of the condenser tube process.",
+      "Key Benefits & ROI: Metric-heavy grid layout.",
+      "Tech Specs: Dense, table-like grid.",
+      "Industries Served: Icon-driven cards.",
+      "Trust/Case Studies: Client logos (text/icon based) and testimonials.",
+      "Contact Demo: Shadcn form layout."
+    ]
+  },
+  "visual_enhancers": {
+    "surfaces": "Grid Borders (The Technical Look). Avoid glassmorphism as it feels too consumer-tech. Use flat solid surfaces with sharp 1px borders to simulate milled metal and structural integrity.",
+    "corners": "Sharp (rounded-none) or very minimal radius (rounded-sm) to maintain the brutalist engineering aesthetic.",
+    "textures": "Apply a subtle SVG noise/grain overlay to the main background to break digital flatness."
+  },
+  "component_rules": {
+    "buttons": "Rectangular, sharp edges. Primary button uses solid Amber background with black text. Secondary button uses transparent background with 1px border and white text.",
+    "cards": "Flat background, 1px border. On hover: subtle -translate-y-1 and border color shift. No heavy drop shadows.",
+    "inputs": "Use Shadcn components. Override rounded borders to rounded-none or rounded-sm. Dark backgrounds with high-contrast borders.",
+    "icons": "Use lucide-react with stroke-width 1.5 to maintain crisp, technical line work."
+  },
+  "motion": {
+    "sponge_ball_animation": "CRITICAL: In the 'How it works' section, create an SVG diagram of condenser tubes. Use Framer Motion to animate small #F59E0B circles (representing the cleaning sponge balls) flowing along the tube paths. This visually explains the 'online cleaning without shutdown' concept.",
+    "interactions": "Subtle, snappy micro-interactions. Transition transforms (e.g., translate-y) and border colors on hover. No 'transition: all'."
+  },
+  "accessibility": {
+    "contrast": "Ensure white text on dark background meets WCAG AAA standards. Use bg-black/60 overlay on hero image.",
+    "testing": "All interactive and key informational elements MUST include a data-testid attribute (e.g., data-testid='hero-cta-button', data-testid='demo-form-submit').",
+    "motion": "Respect prefers-reduced-motion for the sponge ball animation."
+  },
+  "media": {
+    "image_urls": {
+      "hero_background": {
+        "url": "https://images.unsplash.com/photo-1700607101915-99650c815caf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxwb3dlciUyMHBsYW50JTIwY29vbGluZyUyMHRvd2VyJTIwaW5kdXN0cmlhbHxlbnwwfHx8fDE3ODM1NDYwMjJ8MA&ixlib=rb-4.1.0&q=85",
+        "category": "Hero Section",
+        "description": "Nuclear power plant cooling tower at night, providing a dramatic industrial backdrop. Must be darkened with bg-black/60 overlay."
+      },
+      "technical_background": {
+        "url": "https://images.unsplash.com/photo-1538474705339-e87de81450e8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDR8MHwxfHNlYXJjaHwyfHxpbmR1c3RyaWFsJTIwZW5naW5lZXJpbmclMjBtYWNoaW5lcnklMjBwaXBlc3xlbnwwfHx8fDE3ODM1NDYwMjJ8MA&ixlib=rb-4.1.0&q=85",
+        "category": "Specs / Internal Section",
+        "description": "Grayscale metal pipes for use as a structural background graphic in the Tech Specs or How It works section."
+      },
+      "industry_showcase": {
+        "url": "https://images.unsplash.com/photo-1513828742140-ccaa28f3eda0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDR8MHwxfHNlYXJjaHw0fHxpbmR1c3RyaWFsJTIwZW5naW5lZXJpbmclMjBtYWNoaW5lcnklMjBwaXBlc3xlbnwwfHx8fDE3ODM1NDYwMjJ8MA&ixlib=rb-4.1.0&q=85",
+        "category": "Industries / Footer",
+        "description": "Grey industrial equipment to visually anchor the Industries Served section."
+      }
+    }
+  },
+  "libraries": [
+    "framer-motion",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "sonner"
+  ],
+  "instructions_to_main_agent": [
+    "Build a premium, one-page B2B industrial landing page for VOCCSYS.",
+    "Target Audience: Plant engineers, procurement heads. Vibe must be 'Technical Authority'.",
+    "Files are .js and .jsx, do not output .tsx files. Use standard React JSX.",
+    "Implement a text-based wordmark for the VOCCSYS logo (font-black tracking-tighter). Do not use an image logo.",
+    "Hero Section: Feature a strong value prop ('Online Cleaning Without Plant Shutdown'). Use the provided 'hero_background' URL with a heavy dark overlay.",
+    "How It Works: Create an SVG and Framer Motion based animation illustrating sponge balls (orange dots) flowing through condenser tubes and recirculating.",
+    "ROI & Benefits: Display specific data points (Fuel Savings, Heat Rate Improvement, Reduced Downtime, ROI in months) using massive typography for numbers.",
+    "Industries Served: Use lucide-react icons (e.g., Zap for Power, Snowflake for HVAC, Factory for Petrochemical) in a grid layout.",
+    "Trust & Logos: Instead of placeholder image URLs, construct clean, text/icon-based faux logos (e.g., Lucide Hexagon + 'Apex Steel') to represent case studies.",
+    "Request Demo: Build a fully functional UI form using standard html/Tailwind inside a structured grid, ensuring a technical, rigid aesthetic."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Avoid generic, 'on distribution' AI outputs. Do not use centered, fluffy SaaS layouts.",
+    "Create depth through layered design elements (borders, grid lines) rather than soft drop shadows.",
+    "Do NOT apply universal transitions (e.g., transition: all). Target specific properties like opacity, border-color, and transform.",
+    "Do NOT center align the app container. Respect optical alignment and reading flow.",
+    "Never use AI assistant emoji characters.",
+    "Use Sonner for toasts (ensure to include data-testid).",
+    "Prioritize Shadcn UI patterns but strip out soft, consumer-friendly stylings (remove heavy radii, remove soft shadows)."
+  ]
+}
