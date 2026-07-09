@@ -35,7 +35,7 @@ export default function Trust() {
 
   return (
     <section id="trust" data-testid="trust-section" className="relative bg-[#F2F1ED] text-[#1F1F22]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 lg:py-20">
         <div className="flex items-center gap-3 mb-6">
           <span className="w-8 h-[1px] bg-[#B45309]" />
           <span className="overline">Trusted across industry</span>

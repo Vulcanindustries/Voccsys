@@ -42,7 +42,7 @@ const SPEC_GROUPS = [
 export default function Specs() {
   return (
     <section id="specs" data-testid="specs-section" className="relative bg-[#F2F1ED] text-[#3D3F3E]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 lg:py-20">
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-14">
           <div className="lg:col-span-6">
             <div className="overline mb-4">04 / Technical Specifications</div>

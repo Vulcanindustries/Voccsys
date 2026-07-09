@@ -20,7 +20,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#F2F1ED]/25 via-transparent to-[#F2F1ED]" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-24 pb-32 lg:pt-32 lg:pb-40">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 lg:py-20">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-8">
             <motion.div
