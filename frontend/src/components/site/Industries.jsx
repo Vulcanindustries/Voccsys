@@ -45,7 +45,7 @@ export default function Industries() {
                 className="v-card p-7 flex flex-col"
               >
                 <div className="flex items-start justify-between">
-                  <div className="v-icon-box w-11 h-11 border border-[#D9D6CE] flex items-center justify-center">
+                  <div className="v-icon-box w-11 h-11 flex items-center justify-center">
                     <Icon size={20} strokeWidth={1.5} className="text-[#B45309]" />
                   </div>
                   <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B45309] border border-[#B45309]/30 px-2 py-1">

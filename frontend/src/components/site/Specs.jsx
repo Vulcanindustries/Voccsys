@@ -65,8 +65,7 @@ export default function Specs() {
               data-testid={`spec-group-${gi}`}
               className={`bg-white p-8 ${gi % 2 === 0 ? "md:border-r" : ""} ${gi < 2 ? "border-b" : ""} border-[#D9D6CE]`}
             >
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-[#B45309]" />
+              <div>
                 <div className="overline">{g.title}</div>
               </div>
 

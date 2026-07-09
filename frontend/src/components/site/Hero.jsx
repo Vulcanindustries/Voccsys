@@ -27,9 +27,8 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-8"
+              className="mb-8"
             >
-              <span className="w-8 h-[1px] bg-[#B45309]" />
               <span className="overline text-[#B45309]">
                 Patented · Online Cleaning · Zero Shutdown
               </span>

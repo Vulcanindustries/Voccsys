@@ -41,7 +41,7 @@ export default function Header() {
           <span className="font-display font-black tracking-[-0.04em] text-xl text-[#1F1F22]">
             VOCCSYS
           </span>
-          <span className="hidden md:inline overline pl-2 border-l border-[#D9D6CE]">
+          <span className="hidden md:inline overline no-lead pl-2 border-l border-[#D9D6CE]">
             by Vulcan Industries
           </span>
         </button>
