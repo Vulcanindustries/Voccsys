@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>VOCCSYS · Palette Preview — Option D & E</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: #0d0d10; color: #fff; }
+  .page { max-width: 1400px; margin: 0 auto; padding: 40px 24px 80px; }
+  .page h1 { font-family: 'Chivo', sans-serif; font-weight: 900; letter-spacing: -0.03em; font-size: 28px; margin-bottom: 8px; }
+  .page > p.sub { color: #9CA3AF; font-size: 14px; margin-bottom: 32px; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+  @media (min-width: 1100px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+  /* Palette card wrapper */
+  .palette {
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .palette-header {
+    padding: 20px 24px;
+    background: #17181C;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .palette-header .title {
+    font-family: 'Chivo', sans-serif; font-weight: 800; letter-spacing: -0.02em; font-size: 18px; color: #fff;
+  }
+  .palette-header .swatches { display: flex; gap: 6px; align-items: center; }
+  .sw {
+    width: 22px; height: 22px; border: 1px solid rgba(255,255,255,0.15); border-radius: 2px;
+    display: inline-block;
+  }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #9CA3AF; margin-left: 8px;
+  }
+
+  /* Sample surface */
+  .sample { padding: 28px; }
+
+  .overline {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  }
+  h2.hero {
+    font-family: 'Chivo', sans-serif; font-weight: 900; letter-spacing: -0.04em; font-size: 44px; line-height: 0.95;
+    margin: 14px 0 10px;
+  }
+  .lede { font-size: 15px; line-height: 1.6; max-width: 520px; }
+  .cta-row { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Chivo', sans-serif; font-weight: 700; font-size: 13px; padding: 12px 18px;
+    border: 1px solid; border-radius: 0; cursor: pointer; letter-spacing: 0.02em;
+    transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  }
+  .btn-secondary { font-weight: 600; background: transparent; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+  .stat { border-top: 1px solid; padding-top: 10px; }
+  .stat-num { font-family: 'Chivo', sans-serif; font-weight: 900; font-size: 28px; letter-spacing: -0.03em; line-height: 1; }
+  .stat-suf { font-family: 'IBM Plex Mono', monospace; font-size: 13px; margin-left: 3px; }
+  .stat-lab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 6px; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
+  .card {
+    padding: 16px; border: 1px solid; transition: transform 180ms ease, border-color 180ms ease;
+  }
+  .card:hover { transform: translateY(-2px); }
+  .card-title { font-family: 'Chivo', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .card-body { font-size: 12px; line-height: 1.5; }
+
+  .chip {
+    display: inline-block; padding: 3px 9px; font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid;
+  }
+
+  /* ===================== OPTION D — COPPER BEARING ===================== */
+  .opt-d { background: #1A1A1F; color: #F5F5F4; }
+  .opt-d .overline { color: #A8A29E; }
+  .opt-d .lede { color: #D6D3D1; }
+  .opt-d .accent { color: #B45309; }
+  .opt-d .btn-primary { background: #B45309; border-color: #B45309; color: #fff; }
+  .opt-d .btn-primary:hover { background: #92400E; border-color: #92400E; transform: translateY(-1px); }
+  .opt-d .btn-secondary { color: #F5F5F4; border-color: #3A3A42; }
+  .opt-d .btn-secondary:hover { border-color: #B45309; background: rgba(180, 83, 9, 0.08); }
+  .opt-d .stat { border-color: #3A3A42; }
+  .opt-d .stat-lab { color: #A8A29E; }
+  .opt-d .stat-suf { color: #B45309; }
+  .opt-d .card { background: #242429; border-color: #3A3A42; }
+  .opt-d .card:hover { border-color: #B45309; }
+  .opt-d .card-body { color: #A8A29E; }
+  .opt-d .chip { border-color: rgba(180,83,9,0.4); color: #B45309; }
+  .opt-d .rule-accent { width: 32px; height: 2px; background: #B45309; display: inline-block; vertical-align: middle; margin-right: 10px; }
+
+  /* ===================== OPTION E — REACTOR GREEN ===================== */
+  .opt-e { background: #0A0F0D; color: #EAF5EF; }
+  .opt-e .overline { color: #8FA69A; }
+  .opt-e .lede { color: #C7D6CE; }
+  .opt-e .accent { color: #00D084; }
+  .opt-e .btn-primary { background: #00D084; border-color: #00D084; color: #041712; }
+  .opt-e .btn-primary:hover { background: #00A76B; border-color: #00A76B; transform: translateY(-1px); }
+  .opt-e .btn-secondary { color: #EAF5EF; border-color: #243029; }
+  .opt-e .btn-secondary:hover { border-color: #00D084; background: rgba(0, 208, 132, 0.06); }
+  .opt-e .stat { border-color: #243029; }
+  .opt-e .stat-lab { color: #8FA69A; }
+  .opt-e .stat-suf { color: #00D084; }
+  .opt-e .card { background: #131A17; border-color: #243029; }
+  .opt-e .card:hover { border-color: #00D084; }
+  .opt-e .card-body { color: #8FA69A; }
+  .opt-e .chip { border-color: rgba(0,208,132,0.35); color: #00D084; }
+  .opt-e .rule-accent { width: 32px; height: 2px; background: #00D084; display: inline-block; vertical-align: middle; margin-right: 10px; }
+
+  code { font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>VOCCSYS · Palette Preview</h1>
+  <p class="sub">Two options rendered with representative UI blocks. Nothing here is applied to the live site.</p>
+
+  <div class="grid">
+
+    <!-- ============== OPTION D ============== -->
+    <div class="palette">
+      <div class="palette-header">
+        <div class="title">Option D — Copper Bearing<span class="tag">warm technical</span></div>
+        <div class="swatches" title="bg / surface / border / accent">
+          <span class="sw" style="background:#1A1A1F"></span>
+          <span class="sw" style="background:#242429"></span>
+          <span class="sw" style="background:#3A3A42"></span>
+          <span class="sw" style="background:#B45309"></span>
+        </div>
+      </div>
+      <div class="sample opt-d">
+        <div class="overline"><span class="rule-accent"></span>Patented · Online Cleaning · Zero Shutdown</div>
+        <h2 class="hero">Clean condensers <span class="accent">while the plant runs.</span></h2>
+        <p class="lede">VOCCSYS is Vulcan Industries&apos; online condenser tube cleaning system — a continuous ball-circulation loop that restores heat rate without stopping the plant.</p>
+        <div class="cta-row">
+          <button class="btn-primary">Request On-Site Demo →</button>
+          <button class="btn-secondary">▶ See the Process</button>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="stat-num">0<span class="stat-suf">hrs</span></div><div class="stat-lab">Shutdown</div></div>
+          <div class="stat"><div class="stat-num">1–3%</div><div class="stat-lab">Heat rate</div></div>
+          <div class="stat"><div class="stat-num">&lt;12<span class="stat-suf">mo</span></div><div class="stat-lab">Payback</div></div>
+        </div>
+        <div class="cards">
+          <div class="card"><div class="card-title">Continuous</div><div class="card-body">Runs 24×7 with your condenser — no offline windows.</div></div>
+          <div class="card"><div class="card-title">Mechanical</div><div class="card-body">No chemicals, no additives, no discharge risk.</div></div>
+          <div class="card"><div class="card-title">Proven</div><div class="card-body">Deployed across power, HVAC, refining &amp; steel.</div></div>
+        </div>
+        <div style="margin-top: 22px;">
+          <span class="chip">500 MW+</span>
+          &nbsp;<span class="chip">24×7</span>
+          &nbsp;<span class="chip">RETROFIT</span>
+        </div>
+        <div style="margin-top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #A8A29E;">
+          bg <code style="color:#F5F5F4">#1A1A1F</code> · surface <code style="color:#F5F5F4">#242429</code> · border <code style="color:#F5F5F4">#3A3A42</code> · accent <code style="color:#B45309">#B45309</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== OPTION E ============== -->
+    <div class="palette">
+      <div class="palette-header">
+        <div class="title">Option E — Reactor Green<span class="tag">operator console</span></div>
+        <div class="swatches" title="bg / surface / border / accent">
+          <span class="sw" style="background:#0A0F0D"></span>
+          <span class="sw" style="background:#131A17"></span>
+          <span class="sw" style="background:#243029"></span>
+          <span class="sw" style="background:#00D084"></span>
+        </div>
+      </div>
+      <div class="sample opt-e">
+        <div class="overline"><span class="rule-accent"></span>Patented · Online Cleaning · Zero Shutdown</div>
+        <h2 class="hero">Clean condensers <span class="accent">while the plant runs.</span></h2>
+        <p class="lede">VOCCSYS is Vulcan Industries&apos; online condenser tube cleaning system — a continuous ball-circulation loop that restores heat rate without stopping the plant.</p>
+        <div class="cta-row">
+          <button class="btn-primary">Request On-Site Demo →</button>
+          <button class="btn-secondary">▶ See the Process</button>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="stat-num">0<span class="stat-suf">hrs</span></div><div class="stat-lab">Shutdown</div></div>
+          <div class="stat"><div class="stat-num">1–3%</div><div class="stat-lab">Heat rate</div></div>
+          <div class="stat"><div class="stat-num">&lt;12<span class="stat-suf">mo</span></div><div class="stat-lab">Payback</div></div>
+        </div>
+        <div class="cards">
+          <div class="card"><div class="card-title">Continuous</div><div class="card-body">Runs 24×7 with your condenser — no offline windows.</div></div>
+          <div class="card"><div class="card-title">Mechanical</div><div class="card-body">No chemicals, no additives, no discharge risk.</div></div>
+          <div class="card"><div class="card-title">Proven</div><div class="card-body">Deployed across power, HVAC, refining &amp; steel.</div></div>
+        </div>
+        <div style="margin-top: 22px;">
+          <span class="chip">500 MW+</span>
+          &nbsp;<span class="chip">24×7</span>
+          &nbsp;<span class="chip">RETROFIT</span>
+        </div>
+        <div style="margin-top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8FA69A;">
+          bg <code style="color:#EAF5EF">#0A0F0D</code> · surface <code style="color:#EAF5EF">#131A17</code> · border <code style="color:#EAF5EF">#243029</code> · accent <code style="color:#00D084">#00D084</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
