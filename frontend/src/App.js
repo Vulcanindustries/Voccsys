@@ -5,7 +5,7 @@ import Landing from "@/pages/Landing";
 
 function App() {
   return (
-    <div className="App min-h-screen bg-[#121216] text-[#FAFAFA]" data-testid="app-root">
+    <div className="App min-h-screen bg-[#F2F1ED] text-[#FAFAFA]" data-testid="app-root">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />

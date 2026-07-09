@@ -4,16 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   VOCCSYS — Concrete & Rust (light theme)
+   ============================================================ */
 :root {
-    --v-bg: #121216;
-    --v-surface: #1A1A1F;
-    --v-surface-2: #22222A;
-    --v-border: #2E2E38;
-    --v-amber: #500000;
-    --v-amber-hover: #6B0A0A;
-    --v-accent-light: #500000;
-    --v-text: #FAFAFA;
-    --v-muted: #A0A0AC;
+    --v-bg: #F2F1ED;
+    --v-surface: #FFFFFF;
+    --v-surface-2: #F8F7F3;
+    --v-surface-3: #ECEBE5;
+    --v-border: #D9D6CE;
+    --v-border-strong: #BDBAB0;
+    --v-text: #1F1F22;
+    --v-text-2: #3D3F3E;
+    --v-muted: #6B6E6C;
+    --v-copper: #B45309;
+    --v-copper-hover: #92400E;
+    /* legacy aliases */
+    --v-amber: var(--v-copper);
+    --v-amber-hover: var(--v-copper-hover);
 }
 
 html, body, #root {
@@ -28,26 +36,25 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--v-bg);
     background-image:
-        radial-gradient(1200px 600px at 20% -10%, rgba(80, 0, 0, 0.22), transparent 60%),
-        radial-gradient(900px 500px at 100% 30%, rgba(255, 255, 255, 0.03), transparent 60%);
+        radial-gradient(1000px 500px at 20% -10%, rgba(180, 83, 9, 0.05), transparent 60%),
+        radial-gradient(900px 500px at 100% 30%, rgba(31, 31, 34, 0.03), transparent 60%);
     background-attachment: fixed;
 }
 
-/* Subtle grain overlay */
 body::before {
     content: "";
     pointer-events: none;
     position: fixed;
     inset: 0;
     z-index: 0;
-    opacity: 0.06;
-    mix-blend-mode: overlay;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
 }
 
 .font-display { font-family: 'Chivo', sans-serif; letter-spacing: -0.02em; }
-.font-body { font-family: 'IBM Plex Sans', sans-serif; }
-.font-mono { font-family: 'IBM Plex Mono', monospace; }
+.font-body    { font-family: 'IBM Plex Sans', sans-serif; }
+.font-mono    { font-family: 'IBM Plex Mono', monospace; }
 
 .overline {
     font-family: 'IBM Plex Mono', monospace;
@@ -60,19 +67,23 @@ body::before {
 .rule { height: 1px; background: var(--v-border); }
 
 .v-btn-primary {
-    background: var(--v-amber);
-    color: #FAFAFA;
+    background: var(--v-copper);
+    color: #FFFFFF;
     padding: 14px 22px;
     font-family: 'Chivo', sans-serif;
     font-weight: 700;
     letter-spacing: 0.02em;
-    border: 1px solid var(--v-amber);
+    border: 1px solid var(--v-copper);
     transition: background-color 180ms ease, transform 180ms ease, border-color 180ms ease;
     display: inline-flex;
     align-items: center;
     gap: 10px;
 }
-.v-btn-primary:hover { background: var(--v-amber-hover); border-color: var(--v-amber-hover); transform: translateY(-1px); }
+.v-btn-primary:hover {
+    background: var(--v-copper-hover);
+    border-color: var(--v-copper-hover);
+    transform: translateY(-1px);
+}
 
 .v-btn-secondary {
     background: transparent;
@@ -81,16 +92,19 @@ body::before {
     font-family: 'Chivo', sans-serif;
     font-weight: 600;
     letter-spacing: 0.02em;
-    border: 1px solid var(--v-border);
+    border: 1px solid var(--v-border-strong);
     transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
     display: inline-flex;
     align-items: center;
     gap: 10px;
 }
-.v-btn-secondary:hover { border-color: var(--v-amber); background: rgba(80, 0, 0, 0.08); }
+.v-btn-secondary:hover {
+    border-color: var(--v-copper);
+    background: rgba(180, 83, 9, 0.06);
+}
 
 .v-input {
-    background: var(--v-surface);
+    background: #FFFFFF;
     border: 1px solid var(--v-border);
     color: var(--v-text);
     padding: 12px 14px;
@@ -99,27 +113,28 @@ body::before {
     outline: none;
     transition: border-color 160ms ease, background-color 160ms ease;
 }
-.v-input::placeholder { color: #52525B; }
-.v-input:focus { border-color: var(--v-amber); background: #1E1E24; }
+.v-input::placeholder { color: #9A9C99; }
+.v-input:focus { border-color: var(--v-copper); background: #FAF9F5; }
 
 .v-card {
     background: var(--v-surface);
     border: 1px solid var(--v-border);
-    transition: transform 220ms ease, border-color 220ms ease;
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
-.v-card:hover { transform: translateY(-2px); border-color: rgba(80, 0, 0, 0.6); }
+.v-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--v-copper);
+    box-shadow: 0 6px 24px -12px rgba(31, 31, 34, 0.18);
+}
 
 .dashed-divider {
-    background-image: linear-gradient(to right, #2E2E38 60%, transparent 40%);
+    background-image: linear-gradient(to right, var(--v-border) 60%, transparent 40%);
     background-size: 8px 1px;
     background-repeat: repeat-x;
     height: 1px;
 }
 
-.tick-list li {
-    position: relative;
-    padding-left: 22px;
-}
+.tick-list li { position: relative; padding-left: 22px; }
 .tick-list li::before {
     content: "";
     position: absolute;
@@ -127,20 +142,14 @@ body::before {
     top: 8px;
     width: 10px;
     height: 10px;
-    background: var(--v-amber);
+    background: var(--v-copper);
     transform: rotate(45deg);
 }
 
-/* Sponge ball flow keyframes */
-@keyframes ball-flow-1 { from { offset-distance: 0%; } to { offset-distance: 100%; } }
-
-.marquee {
-    display: flex;
-    animation: marquee-scroll 30s linear infinite;
-}
+.marquee { display: flex; animation: marquee-scroll 30s linear infinite; }
 @keyframes marquee-scroll {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to   { transform: translateX(-50%); }
 }
 
 /* Range input */
@@ -148,7 +157,7 @@ body::before {
     -webkit-appearance: none;
     appearance: none;
     height: 4px;
-    background: #2E2E38;
+    background: var(--v-border);
     outline: none;
     border-radius: 0;
     cursor: pointer;
@@ -158,51 +167,51 @@ body::before {
     appearance: none;
     width: 16px;
     height: 22px;
-    background: #500000;
-    border: 1px solid #121216;
+    background: var(--v-copper);
+    border: 1px solid #FFFFFF;
     cursor: grab;
     border-radius: 0;
-    box-shadow: 0 0 0 2px rgba(80, 0, 0, 0.4);
+    box-shadow: 0 0 0 2px rgba(180, 83, 9, 0.25);
     transition: transform 120ms ease;
 }
 .roi-range::-webkit-slider-thumb:active { cursor: grabbing; transform: scaleY(1.1); }
 .roi-range::-moz-range-thumb {
     width: 16px;
     height: 22px;
-    background: #500000;
-    border: 1px solid #121216;
+    background: var(--v-copper);
+    border: 1px solid #FFFFFF;
     border-radius: 0;
     cursor: grab;
 }
 .roi-range::-moz-range-track {
-    background: #2E2E38;
+    background: var(--v-border);
     height: 4px;
     border: none;
 }
 
-::selection { background: var(--v-amber); color: #FAFAFA; }
+::selection { background: var(--v-copper); color: #FFFFFF; }
 
 @layer base {
     :root {
-        --background: 240 12% 8%;
-        --foreground: 0 0% 98%;
-        --card: 240 10% 11%;
-        --card-foreground: 0 0% 98%;
-        --popover: 240 10% 11%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 100% 16%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 240 8% 13%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 240 8% 15%;
-        --muted-foreground: 240 5% 68%;
-        --accent: 0 100% 16%;
-        --accent-foreground: 0 0% 98%;
+        --background: 48 15% 94%;
+        --foreground: 240 5% 12%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 5% 12%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 5% 12%;
+        --primary: 25 88% 37%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 48 12% 90%;
+        --secondary-foreground: 240 5% 12%;
+        --muted: 48 12% 90%;
+        --muted-foreground: 150 3% 43%;
+        --accent: 25 88% 37%;
+        --accent-foreground: 0 0% 100%;
         --destructive: 0 84% 60%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 240 10% 20%;
-        --input: 240 10% 20%;
-        --ring: 0 100% 25%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 42 15% 82%;
+        --input: 42 15% 82%;
+        --ring: 25 88% 37%;
         --radius: 0.125rem;
     }
 }

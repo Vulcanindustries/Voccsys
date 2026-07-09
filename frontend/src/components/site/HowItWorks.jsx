@@ -26,18 +26,18 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section id="process" data-testid="process-section" className="relative bg-[#121216] text-[#E5E5EA]">
+    <section id="process" data-testid="process-section" className="relative bg-[#F2F1ED] text-[#3D3F3E]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-16">
           <div className="lg:col-span-6">
             <div className="overline mb-4">02 / How it works</div>
-            <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
+            <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-[#1F1F22] leading-[1.02]">
               A closed loop. <br />
-              <span className="text-[#500000]">Cleaning without pause.</span>
+              <span className="text-[#B45309]">Cleaning without pause.</span>
             </h2>
           </div>
           <div className="lg:col-span-6">
-            <p className="text-[#A0A0AC] text-base leading-relaxed max-w-xl">
+            <p className="text-[#6B6E6C] text-base leading-relaxed max-w-xl">
               Four stages, one continuous cycle. The balls travel with the cooling water, do their
               job inside the tubes, get caught, and go around again — indefinitely.
             </p>
@@ -45,12 +45,12 @@ export default function HowItWorks() {
         </div>
 
         {/* Diagram */}
-        <div className="border border-[#2E2E38] bg-[#1A1A1F] p-6 lg:p-10 mb-16">
+        <div className="border border-[#D9D6CE] bg-white p-6 lg:p-10 mb-16">
           <SpongeBallDiagram />
         </div>
 
         {/* Steps */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-[#2E2E38]">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-[#D9D6CE]">
           {STEPS.map((s, i) => (
             <motion.div
               key={s.n}
@@ -59,15 +59,15 @@ export default function HowItWorks() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: i * 0.06 }}
               data-testid={`process-step-${i}`}
-              className={`p-8 bg-[#1A1A1F] ${i < STEPS.length - 1 ? "lg:border-r border-[#2E2E38]" : ""} ${i < 2 ? "md:border-b lg:border-b-0 border-[#2E2E38]" : ""} ${i === 0 ? "md:border-r" : ""} ${i === 2 ? "md:border-r lg:border-r" : ""}`}
+              className={`p-8 bg-white ${i < STEPS.length - 1 ? "lg:border-r border-[#D9D6CE]" : ""} ${i < 2 ? "md:border-b lg:border-b-0 border-[#D9D6CE]" : ""} ${i === 0 ? "md:border-r" : ""} ${i === 2 ? "md:border-r lg:border-r" : ""}`}
             >
               <div className="flex items-baseline gap-3">
-                <span className="font-mono text-[#500000] text-sm">{s.n}</span>
-                <span className="h-[1px] w-8 bg-[#500000]" />
+                <span className="font-mono text-[#B45309] text-sm">{s.n}</span>
+                <span className="h-[1px] w-8 bg-[#B45309]" />
               </div>
-              <div className="mt-4 font-display font-bold text-2xl text-white">{s.t}</div>
+              <div className="mt-4 font-display font-bold text-2xl text-[#1F1F22]">{s.t}</div>
               <p
-                className="mt-3 text-sm text-[#A0A0AC] leading-relaxed"
+                className="mt-3 text-sm text-[#6B6E6C] leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: s.d }}
               />
             </motion.div>
@@ -100,12 +100,12 @@ function SpongeBallDiagram() {
       >
         <defs>
           <linearGradient id="tubeGrad" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#22222A" />
+            <stop offset="0%" stopColor="#EAE7DE" />
             <stop offset="100%" stopColor="#101013" />
           </linearGradient>
           <linearGradient id="pipeGrad" x1="0" x2="1" y1="0" y2="0">
             <stop offset="0%" stopColor="#2A2A2E" />
-            <stop offset="100%" stopColor="#22222A" />
+            <stop offset="100%" stopColor="#EAE7DE" />
           </linearGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="2" result="b" />
@@ -117,13 +117,13 @@ function SpongeBallDiagram() {
         </defs>
 
         {/* Left header (inlet) */}
-        <rect x="60" y="60" width="24" height="240" fill="url(#pipeGrad)" stroke="#3E3E48" />
+        <rect x="60" y="60" width="24" height="240" fill="url(#pipeGrad)" stroke="#C9C6BC" />
         <text x="72" y="45" fill="#B8B9B4" fontSize="11" textAnchor="middle" fontFamily="IBM Plex Mono">
           INLET
         </text>
 
         {/* Right header (outlet) */}
-        <rect x={width - 84} y="60" width="24" height="240" fill="url(#pipeGrad)" stroke="#3E3E48" />
+        <rect x={width - 84} y="60" width="24" height="240" fill="url(#pipeGrad)" stroke="#C9C6BC" />
         <text x={width - 72} y="45" fill="#B8B9B4" fontSize="11" textAnchor="middle" fontFamily="IBM Plex Mono">
           OUTLET
         </text>
@@ -135,7 +135,7 @@ function SpongeBallDiagram() {
           width={width - 100}
           height="250"
           fill="none"
-          stroke="#3E3E48"
+          stroke="#C9C6BC"
           strokeDasharray="4 6"
         />
         <text x="60" y="325" fill="#8A8E8C" fontSize="11" fontFamily="IBM Plex Mono">
@@ -147,13 +147,13 @@ function SpongeBallDiagram() {
           const y = 80 + i * 36;
           return (
             <g key={i}>
-              <rect x="84" y={y - 6} width={width - 168} height="12" fill="url(#tubeGrad)" stroke="#3E3E48" />
+              <rect x="84" y={y - 6} width={width - 168} height="12" fill="url(#tubeGrad)" stroke="#C9C6BC" />
               <line
                 x1="84"
                 x2={width - 84}
                 y1={y}
                 y2={y}
-                stroke="#500000"
+                stroke="#B45309"
                 strokeOpacity="0.18"
                 strokeWidth="1"
               />
@@ -167,7 +167,7 @@ function SpongeBallDiagram() {
               L 80 340
               C -20 340, -20 180, 80 180`}
           fill="none"
-          stroke="#3E3E48"
+          stroke="#C9C6BC"
           strokeWidth="10"
           strokeLinecap="round"
           opacity="0.35"
@@ -177,7 +177,7 @@ function SpongeBallDiagram() {
               L 80 340
               C -20 340, -20 180, 80 180`}
           fill="none"
-          stroke="#500000"
+          stroke="#B45309"
           strokeOpacity="0.15"
           strokeWidth="2"
           strokeDasharray="4 6"
@@ -185,13 +185,13 @@ function SpongeBallDiagram() {
 
         {/* Collector / Pump icons */}
         <g>
-          <circle cx={width - 40} cy="340" r="14" fill="#363A38" stroke="#500000" />
+          <circle cx={width - 40} cy="340" r="14" fill="#363A38" stroke="#B45309" />
           <text x={width - 40} y="366" fontSize="10" fill="#B8B9B4" textAnchor="middle" fontFamily="IBM Plex Mono">
             COLLECTOR
           </text>
         </g>
         <g>
-          <rect x="30" y="326" width="28" height="28" fill="#363A38" stroke="#500000" />
+          <rect x="30" y="326" width="28" height="28" fill="#363A38" stroke="#B45309" />
           <text x="44" y="374" fontSize="10" fill="#B8B9B4" textAnchor="middle" fontFamily="IBM Plex Mono">
             PUMP
           </text>
@@ -206,7 +206,7 @@ function SpongeBallDiagram() {
             <motion.circle
               key={`ball-${i}`}
               r="5"
-              fill="#500000"
+              fill="#B45309"
               filter="url(#glow)"
               initial={{ cx: 84, cy: y }}
               animate={{ cx: [84, width - 84] }}
@@ -225,7 +225,7 @@ function SpongeBallDiagram() {
           <motion.circle
             key={`ret-${i}`}
             r="4"
-            fill="#500000"
+            fill="#B45309"
             opacity="0.85"
             initial={{ cx: width - 84, cy: 340 }}
             animate={{ cx: [width - 84, 84] }}
