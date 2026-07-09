@@ -11,7 +11,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.platypus import (
     BaseDocTemplate, PageTemplate, Frame,
-    Paragraph, Spacer, Table, TableStyle, PageBreak, KeepTogether,
+    Paragraph, Spacer, Table, TableStyle, PageBreak, KeepTogether, Flowable,
 )
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -30,6 +30,121 @@ WHITE       = colors.white
 FONT_BODY = "Helvetica"
 FONT_BOLD = "Helvetica-Bold"
 FONT_MONO = "Courier"
+
+# ============ Vector loop diagram ============
+class LoopDiagram(Flowable):
+    """Closed-loop sponge-ball circulation diagram drawn as vectors."""
+
+    def __init__(self, width=170 * mm, height=70 * mm):
+        Flowable.__init__(self)
+        self.width = width
+        self.height = height
+
+    def wrap(self, aw, ah):
+        return self.width, self.height
+
+    def draw(self):
+        c = self.canv
+        w, h = self.width, self.height
+
+        # ==== Condenser shell (dashed outline) ====
+        c.setDash(3, 3)
+        c.setStrokeColor(BORDER)
+        c.setLineWidth(0.5)
+        c.rect(8 * mm, 12 * mm, w - 16 * mm, h - 20 * mm, stroke=1, fill=0)
+        c.setDash()  # reset
+
+        # ==== Inlet / Outlet header blocks ====
+        c.setFillColor(colors.HexColor("#2E2E38"))
+        c.setStrokeColor(colors.HexColor("#4A4A55"))
+        c.setLineWidth(0.4)
+        c.rect(10 * mm, 20 * mm, 5 * mm, h - 32 * mm, fill=1, stroke=1)
+        c.rect(w - 15 * mm, 20 * mm, 5 * mm, h - 32 * mm, fill=1, stroke=1)
+
+        # Header labels
+        c.setFont(FONT_MONO, 6)
+        c.setFillColor(MUTED)
+        c.drawCentredString(12.5 * mm, h - 10 * mm, "INLET")
+        c.drawCentredString(w - 12.5 * mm, h - 10 * mm, "OUTLET")
+        c.drawString(10 * mm, 4 * mm, "CONDENSER SHELL — TUBE BUNDLE")
+
+        # ==== Tubes ====
+        tube_count = 5
+        top = h - 18 * mm
+        bottom = 24 * mm
+        span = top - bottom
+        tube_y_positions = [bottom + i * (span / (tube_count - 1)) for i in range(tube_count)]
+        c.setFillColor(colors.HexColor("#DDD9CB"))
+        c.setStrokeColor(colors.HexColor("#B0AC9E"))
+        c.setLineWidth(0.4)
+        for ty in tube_y_positions:
+            c.rect(15 * mm, ty - 1.6 * mm, w - 30 * mm, 3.2 * mm, fill=1, stroke=1)
+
+        # ==== Balls on tubes ====
+        c.setFillColor(COPPER)
+        c.setStrokeColor(COPPER)
+        import random
+        random.seed(3)
+        for i, ty in enumerate(tube_y_positions):
+            # 1–2 balls per tube at random-ish x offset
+            base_x = 22 + (i * 15) % 100
+            for j in range(2):
+                bx = 15 * mm + (base_x + j * 55) * mm / 3.2
+                if bx < w - 18 * mm:
+                    c.circle(bx, ty, 1.2 * mm, fill=1, stroke=0)
+
+        # ==== Recirculation loop path (bottom curved return) ====
+        c.setStrokeColor(colors.HexColor("#B0AC9E"))
+        c.setLineWidth(3.4)
+        c.setLineCap(1)  # round
+        c.setDash()
+        # Right outlet → down → across → up to inlet
+        p = c.beginPath()
+        p.moveTo(w - 12.5 * mm, 22 * mm)
+        p.curveTo(w - 4 * mm, 22 * mm, w - 4 * mm, 14 * mm, w - 14 * mm, 14 * mm)
+        p.lineTo(14 * mm, 14 * mm)
+        p.curveTo(4 * mm, 14 * mm, 4 * mm, 22 * mm, 12.5 * mm, 22 * mm)
+        c.drawPath(p, stroke=1, fill=0)
+
+        # Copper dashed overlay on return path (accent)
+        c.setStrokeColor(COPPER)
+        c.setLineWidth(0.6)
+        c.setDash(2, 2)
+        p2 = c.beginPath()
+        p2.moveTo(w - 12.5 * mm, 22 * mm)
+        p2.curveTo(w - 4 * mm, 22 * mm, w - 4 * mm, 14 * mm, w - 14 * mm, 14 * mm)
+        p2.lineTo(14 * mm, 14 * mm)
+        p2.curveTo(4 * mm, 14 * mm, 4 * mm, 22 * mm, 12.5 * mm, 22 * mm)
+        c.drawPath(p2, stroke=1, fill=0)
+        c.setDash()
+
+        # ==== Balls on return path ====
+        c.setFillColor(COPPER)
+        for i, x in enumerate([w - 30 * mm, w - 55 * mm, w / 2, 55 * mm, 30 * mm]):
+            c.circle(x, 14 * mm, 1.0 * mm, fill=1, stroke=0)
+
+        # ==== Collector & Pump icons ====
+        c.setFillColor(CONCRETE)
+        c.setStrokeColor(COPPER)
+        c.setLineWidth(0.8)
+        # Collector on right
+        c.circle(w - 4 * mm, 14 * mm, 2.5 * mm, fill=1, stroke=1)
+        c.setFont(FONT_MONO, 5.5)
+        c.setFillColor(MUTED)
+        c.drawCentredString(w - 4 * mm, 8 * mm, "COLLECTOR")
+        # Pump on left
+        c.setFillColor(CONCRETE)
+        c.setStrokeColor(COPPER)
+        c.rect(1.5 * mm, 11.5 * mm, 5 * mm, 5 * mm, fill=1, stroke=1)
+        c.setFillColor(MUTED)
+        c.drawCentredString(4 * mm, 8 * mm, "PUMP")
+
+        # ==== Flow direction labels ====
+        c.setFont(FONT_MONO, 6.5)
+        c.setFillColor(MUTED)
+        c.drawCentredString(w / 2, h - 4 * mm, "→ COOLING WATER + SPONGE BALLS →")
+        c.drawCentredString(w / 2, 18 * mm, "← RECIRCULATION LOOP ←")
+
 
 # ============ Styles ============
 def make_styles():
@@ -266,6 +381,10 @@ def build_process(st):
     s.append(Paragraph("A closed loop.", st["h2"]))
     s.append(Paragraph("<font color='#B45309'>Cleaning without pause.</font>", st["h2"]))
     s.append(Spacer(1, 4 * mm))
+
+    # Vector diagram
+    s.append(LoopDiagram(width=170 * mm, height=62 * mm))
+    s.append(Spacer(1, 5 * mm))
 
     steps = [
         ("01", "INJECT",       "Sponge balls (slightly oversized vs tube ID) are injected into the cooling water inlet header via the VOCCSYS ball trap."),
@@ -530,6 +649,7 @@ def generate(output_path: Path):
     story.append(NextPageTemplate("body"))
     story.append(PageBreak())
     story.extend(build_overview(st))
+    story.append(PageBreak())
     story.extend(build_process(st))
     story.append(PageBreak())
     story.extend(build_roi(st))
@@ -541,8 +661,210 @@ def generate(output_path: Path):
     doc.build(story)
 
 
+# =====================================================================
+# ONE-PAGER — condensed 2-page procurement summary
+# =====================================================================
+def build_onepager_page1(st):
+    s = []
+    s.append(Paragraph("PRODUCT ONE-PAGER · " + datetime.utcnow().strftime("%B %Y").upper(), st["overline"]))
+    s.append(Spacer(1, 3 * mm))
+    s.append(Paragraph("Clean condensers", st["h2"]))
+    s.append(Paragraph("<font color='#B45309'>while the plant runs.</font>", st["h2"]))
+    s.append(Spacer(1, 3 * mm))
+    s.append(Paragraph(
+        "VOCCSYS is Vulcan Industries&#8217; patented online condenser cleaning "
+        "system. A continuous sponge-ball circulation loop scrubs scale and "
+        "biofilm from every tube while the plant remains in operation.",
+        st["body_small"],
+    ))
+    s.append(Spacer(1, 4 * mm))
+
+    # 4 headline metrics
+    metrics = [
+        ("0 hrs",   "SHUTDOWN"),
+        ("1&#8211;3%",   "HEAT RATE"),
+        ("&lt;12 mo","PAYBACK"),
+        ("24/7",    "OPERATION"),
+    ]
+    m_cells = []
+    for n, l in metrics:
+        m_cells.append([
+            Paragraph(f"<font color='#1F1F22'><b>{n}</b></font>",
+                      ParagraphStyle("m", parent=st["stat_num"], fontSize=22, leading=24)),
+            Paragraph(l, st["stat_lab"]),
+        ])
+    m_tbl = Table(
+        [[c[0] for c in m_cells], [c[1] for c in m_cells]],
+        colWidths=[42 * mm] * 4,
+    )
+    m_tbl.setStyle(TableStyle([
+        ("LINEABOVE", (0, 0), (-1, 0), 0.6, COPPER),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING", (0, 0), (-1, 0), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, 0), 2),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+    ]))
+    s.append(m_tbl)
+    s.append(Spacer(1, 6 * mm))
+
+    # Compact process diagram
+    s.append(Paragraph("HOW IT WORKS", st["overline"]))
+    s.append(Spacer(1, 2 * mm))
+    s.append(LoopDiagram(width=170 * mm, height=52 * mm))
+    s.append(Spacer(1, 3 * mm))
+
+    steps = [
+        ("01", "INJECT",      "Balls injected into cooling water inlet header."),
+        ("02", "SCRUB",       "Balls flow through every tube, cleaning on every pass."),
+        ("03", "COLLECT",     "Downstream strainer captures 100% of balls."),
+        ("04", "RECIRCULATE", "Recovery pump re-injects balls for continuous loop."),
+    ]
+    rows = []
+    for n, t, d in steps:
+        rows.append([
+            Paragraph(f"<font color='#B45309'><b>{n}</b></font>",
+                      ParagraphStyle("n", parent=st["h3"], fontSize=10)),
+            Paragraph(f"<b>{t}</b>",
+                      ParagraphStyle("t", parent=st["h3"], fontSize=10)),
+            Paragraph(d, st["body_small"]),
+        ])
+    tbl = Table(rows, colWidths=[10 * mm, 28 * mm, 132 * mm])
+    tbl.setStyle(TableStyle([
+        ("LINEBELOW", (0, 0), (-1, -1), 0.3, BORDER),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    s.append(tbl)
+    return s
+
+
+def build_onepager_page2(st):
+    s = []
+    # 6 key benefits — two-column
+    s.append(Paragraph("KEY BENEFITS", st["overline"]))
+    s.append(Spacer(1, 3 * mm))
+    benefits = [
+        ("Lower fuel & auxiliary power", "Every % of vacuum recovered = direct fuel savings."),
+        ("Stable heat rate",             "Flat performance at design conditions."),
+        ("No production loss",           "Cleaning happens with the plant running."),
+        ("Zero chemicals",               "Fully mechanical scrubbing. Zero discharge risk."),
+        ("Extends tube life",            "Prevents pitting, under-deposit corrosion, biofouling."),
+        ("Retrofit-ready",               "Installs on existing condensers with minimal piping mods."),
+    ]
+    b_rows = []
+    for i in range(0, len(benefits), 2):
+        a = benefits[i]
+        b = benefits[i + 1] if i + 1 < len(benefits) else ("", "")
+        b_rows.append([
+            [Paragraph(f"<b>{a[0]}</b>", st["h3"]), Paragraph(a[1], st["body_small"])],
+            [Paragraph(f"<b>{b[0]}</b>", st["h3"]), Paragraph(b[1], st["body_small"])],
+        ])
+    b_tbl = Table(b_rows, colWidths=[85 * mm, 85 * mm])
+    b_tbl.setStyle(TableStyle([
+        ("LINEABOVE", (0, 0), (-1, 0), 0.4, BORDER),
+        ("LINEBELOW", (0, 0), (-1, -1), 0.4, BORDER),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING", (0, 0), (-1, -1), 7),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 10),
+    ]))
+    s.append(b_tbl)
+    s.append(Spacer(1, 8 * mm))
+
+    # Quick spec block
+    s.append(Paragraph("SPECIFICATIONS AT A GLANCE", st["overline"]))
+    s.append(Spacer(1, 3 * mm))
+    spec_rows = [
+        ("Models",           "VCS-500 / VCS-1000 / VCS-2000 / Custom"),
+        ("Tube ID range",    "18 mm – 32 mm"),
+        ("Tube materials",   "SS 304 / 316L · Titanium · Cu-Ni · Admiralty Brass"),
+        ("Ball material",    "Natural rubber / EPDM foam · Std / Abrasive / Extra-abrasive"),
+        ("Ball recovery",    "100% via mesh strainer / basket type"),
+        ("Control",          "PLC + HMI · SCADA-ready · ΔP / flow / turbidity / ball-count"),
+        ("Design code",      "TEMA / HEI aligned · 12-month warranty from commissioning"),
+        ("Power",            "415 V, 3φ, 50 Hz (customisable)"),
+    ]
+    spec_tbl = Table(
+        [
+            [Paragraph(k, st["body_small"]),
+             Paragraph(v, ParagraphStyle("v", parent=st["body_small"],
+                                         fontName=FONT_MONO, textColor=INK))]
+            for k, v in spec_rows
+        ],
+        colWidths=[38 * mm, 132 * mm],
+    )
+    spec_tbl.setStyle(TableStyle([
+        ("LINEBELOW", (0, 0), (-1, -1), 0.3, BORDER),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    s.append(spec_tbl)
+    s.append(Spacer(1, 8 * mm))
+
+    # Contact block on copper
+    s.append(Paragraph("REQUEST AN ENGINEERED PROPOSAL", st["overline"]))
+    s.append(Spacer(1, 3 * mm))
+    s.append(Paragraph(
+        "Share your plant details and one of our engineers will get back with a "
+        "tailored technical proposal &#8212; typically within 2 working days.",
+        st["body_small"],
+    ))
+    s.append(Spacer(1, 3 * mm))
+    contact = Table([
+        [Paragraph("<font color='#B45309'><b>EMAIL</b></font>", st["stat_lab"]),
+         Paragraph("contactus@vulcanindustriesindia.com", st["body_small"])],
+        [Paragraph("<font color='#B45309'><b>WEB</b></font>", st["stat_lab"]),
+         Paragraph("voccsys.com", st["body_small"])],
+        [Paragraph("<font color='#B45309'><b>BY</b></font>", st["stat_lab"]),
+         Paragraph("Vulcan Industries India · VOCCSYS™", st["body_small"])],
+    ], colWidths=[22 * mm, 148 * mm])
+    contact.setStyle(TableStyle([
+        ("LINEBELOW", (0, 0), (-1, -1), 0.3, BORDER),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    s.append(contact)
+    return s
+
+
+def generate_onepager(output_path: Path):
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    st = make_styles()
+
+    doc = BaseDocTemplate(
+        str(output_path),
+        pagesize=A4,
+        title="VOCCSYS — Product One-Pager",
+        author="Vulcan Industries India",
+        subject="Vulcan Online Condenser Cleaning System — 2 page summary",
+        leftMargin=20 * mm, rightMargin=20 * mm,
+        topMargin=22 * mm, bottomMargin=22 * mm,
+    )
+    frame_body = Frame(20 * mm, 22 * mm, A4[0] - 40 * mm, A4[1] - 44 * mm, id="body")
+    doc.addPageTemplates([PageTemplate(id="body", frames=[frame_body], onPage=draw_page_frame)])
+
+    story = []
+    story.extend(build_onepager_page1(st))
+    story.append(PageBreak())
+    story.extend(build_onepager_page2(st))
+    doc.build(story)
+
+
 if __name__ == "__main__":
-    out = Path(__file__).resolve().parents[1] / "frontend" / "public" / "voccsys-brochure.pdf"
-    generate(out)
-    print(f"Brochure written to: {out}")
-    print(f"Size: {out.stat().st_size / 1024:.1f} KB")
+    public_dir = Path(__file__).resolve().parents[1] / "frontend" / "public"
+
+    brochure = public_dir / "voccsys-brochure.pdf"
+    generate(brochure)
+    print(f"Brochure  → {brochure}  ({brochure.stat().st_size / 1024:.1f} KB)")
+
+    onepager = public_dir / "voccsys-onepager.pdf"
+    generate_onepager(onepager)
+    print(f"One-pager → {onepager}  ({onepager.stat().st_size / 1024:.1f} KB)")

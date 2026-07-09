@@ -61,6 +61,14 @@ export default function Header() {
 
         <div className="hidden lg:flex items-center gap-3">
           <a
+            href="/voccsys-onepager.pdf"
+            download
+            data-testid="header-cta-onepager"
+            className="text-sm font-medium text-[#6B6E6C] hover:text-[#B45309] transition-colors flex items-center gap-2"
+          >
+            <Download size={14} /> One-Pager
+          </a>
+          <a
             href="/voccsys-brochure.pdf"
             download
             data-testid="header-cta-brochure"
@@ -113,7 +121,15 @@ export default function Header() {
               data-testid="mobile-cta-brochure"
               className="v-btn-secondary mt-3 justify-center"
             >
-              <Download size={16} /> Download Brochure
+              <Download size={16} /> Download Brochure (5 pages)
+            </a>
+            <a
+              href="/voccsys-onepager.pdf"
+              download
+              data-testid="mobile-cta-onepager"
+              className="v-btn-secondary mt-2 justify-center"
+            >
+              <Download size={16} /> Download One-Pager (2 pages)
             </a>
           </div>
         </div>
