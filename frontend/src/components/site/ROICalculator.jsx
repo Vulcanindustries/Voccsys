@@ -68,11 +68,11 @@ export default function ROICalculator() {
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-14">
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-4">
-              <Calculator size={16} strokeWidth={1.5} className="text-[#F59E0B]" />
+              <Calculator size={16} strokeWidth={1.5} className="text-[#A83232]" />
               <span className="overline">Interactive · ROI Calculator</span>
             </div>
             <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
-              Estimate your <span className="text-[#F59E0B]">annual savings</span> in 20 seconds.
+              Estimate your <span className="text-[#A83232]">annual savings</span> in 20 seconds.
             </h2>
           </div>
           <div className="lg:col-span-6">
@@ -156,13 +156,13 @@ export default function ROICalculator() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35 }}
-              className="border-l-2 border-[#F59E0B] pl-5"
+              className="border-l-2 border-[#A83232] pl-5"
               data-testid="roi-annual-savings"
             >
               <div className="overline">Recoverable annual losses</div>
               <div className="mt-2 font-display font-black text-white text-5xl lg:text-6xl tracking-[-0.04em] leading-none">
                 {inCr(result.annualSavings)}
-                <span className="ml-3 text-[#F59E0B] text-lg font-mono align-top">/ year</span>
+                <span className="ml-3 text-[#A83232] text-lg font-mono align-top">/ year</span>
               </div>
               <div className="mt-3 text-sm text-[#A1A1AA]">
                 Approx {currency(result.annualSavings)} — recovered continuously by VOCCSYS.
@@ -230,7 +230,7 @@ function SliderField({ label, unit, value, min, max, step, onChange, testid, for
       <div className="flex items-baseline justify-between mb-2">
         <span className="text-sm text-[#D4D4D8] font-medium">{label}</span>
         <span className="font-display font-bold text-white text-lg tracking-tight" data-testid={`${testid}-value`}>
-          {shown} <span className="text-[#F59E0B] text-xs font-mono ml-1">{unit}</span>
+          {shown} <span className="text-[#A83232] text-xs font-mono ml-1">{unit}</span>
         </span>
       </div>
       <input

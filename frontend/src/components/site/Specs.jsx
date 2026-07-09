@@ -47,7 +47,7 @@ export default function Specs() {
           <div className="lg:col-span-6">
             <div className="overline mb-4">04 / Technical Specifications</div>
             <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
-              Engineered <span className="text-[#F59E0B]">to your condenser</span>, not the other way around.
+              Engineered <span className="text-[#A83232]">to your condenser</span>, not the other way around.
             </h2>
           </div>
           <div className="lg:col-span-6">
@@ -66,7 +66,7 @@ export default function Specs() {
               className={`bg-[#121214] p-8 ${gi % 2 === 0 ? "md:border-r" : ""} ${gi < 2 ? "border-b" : ""} border-[#27272A]`}
             >
               <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-[#F59E0B]" />
+                <span className="w-2 h-2 bg-[#A83232]" />
                 <div className="overline">{g.title}</div>
               </div>
 

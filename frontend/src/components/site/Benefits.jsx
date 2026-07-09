@@ -75,7 +75,7 @@ export default function Benefits() {
             >
               <div className="font-display font-black text-5xl lg:text-6xl text-white leading-none tracking-[-0.04em]">
                 {m.n}
-                {m.suffix && <span className="text-[#F59E0B] text-2xl align-top ml-1">{m.suffix}</span>}
+                {m.suffix && <span className="text-[#A83232] text-2xl align-top ml-1">{m.suffix}</span>}
               </div>
               <div className="dashed-divider my-4" />
               <div className="text-sm font-medium text-white">{m.label}</div>
@@ -99,7 +99,7 @@ export default function Benefits() {
                 className="v-card p-7"
               >
                 <div className="w-11 h-11 border border-[#27272A] flex items-center justify-center">
-                  <Icon size={20} strokeWidth={1.5} className="text-[#F59E0B]" />
+                  <Icon size={20} strokeWidth={1.5} className="text-[#A83232]" />
                 </div>
                 <h3 className="mt-6 font-display font-bold text-xl text-white">{b.t}</h3>
                 <p className="mt-2 text-sm text-[#A1A1AA] leading-relaxed">{b.d}</p>

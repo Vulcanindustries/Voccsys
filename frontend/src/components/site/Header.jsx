@@ -37,7 +37,7 @@ export default function Header() {
           className="flex items-center gap-3 group"
           aria-label="VOCCSYS home"
         >
-          <span className="inline-block w-2 h-6 bg-[#F59E0B]" />
+          <span className="inline-block w-2 h-6 bg-[#A83232]" />
           <span className="font-display font-black tracking-[-0.04em] text-xl text-white">
             VOCCSYS
           </span>

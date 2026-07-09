@@ -33,7 +33,7 @@ export default function HowItWorks() {
             <div className="overline mb-4">02 / How it works</div>
             <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
               A closed loop. <br />
-              <span className="text-[#F59E0B]">Cleaning without pause.</span>
+              <span className="text-[#A83232]">Cleaning without pause.</span>
             </h2>
           </div>
           <div className="lg:col-span-6">
@@ -62,8 +62,8 @@ export default function HowItWorks() {
               className={`p-8 bg-[#121214] ${i < STEPS.length - 1 ? "lg:border-r border-[#27272A]" : ""} ${i < 2 ? "md:border-b lg:border-b-0 border-[#27272A]" : ""} ${i === 0 ? "md:border-r" : ""} ${i === 2 ? "md:border-r lg:border-r" : ""}`}
             >
               <div className="flex items-baseline gap-3">
-                <span className="font-mono text-[#F59E0B] text-sm">{s.n}</span>
-                <span className="h-[1px] w-8 bg-[#F59E0B]" />
+                <span className="font-mono text-[#A83232] text-sm">{s.n}</span>
+                <span className="h-[1px] w-8 bg-[#A83232]" />
               </div>
               <div className="mt-4 font-display font-bold text-2xl text-white">{s.t}</div>
               <p
@@ -153,7 +153,7 @@ function SpongeBallDiagram() {
                 x2={width - 84}
                 y1={y}
                 y2={y}
-                stroke="#F59E0B"
+                stroke="#A83232"
                 strokeOpacity="0.18"
                 strokeWidth="1"
               />
@@ -177,7 +177,7 @@ function SpongeBallDiagram() {
               L 80 340
               C -20 340, -20 180, 80 180`}
           fill="none"
-          stroke="#F59E0B"
+          stroke="#A83232"
           strokeOpacity="0.15"
           strokeWidth="2"
           strokeDasharray="4 6"
@@ -185,13 +185,13 @@ function SpongeBallDiagram() {
 
         {/* Collector / Pump icons */}
         <g>
-          <circle cx={width - 40} cy="340" r="14" fill="#121214" stroke="#F59E0B" />
+          <circle cx={width - 40} cy="340" r="14" fill="#121214" stroke="#A83232" />
           <text x={width - 40} y="366" fontSize="10" fill="#A1A1AA" textAnchor="middle" fontFamily="IBM Plex Mono">
             COLLECTOR
           </text>
         </g>
         <g>
-          <rect x="30" y="326" width="28" height="28" fill="#121214" stroke="#F59E0B" />
+          <rect x="30" y="326" width="28" height="28" fill="#121214" stroke="#A83232" />
           <text x="44" y="374" fontSize="10" fill="#A1A1AA" textAnchor="middle" fontFamily="IBM Plex Mono">
             PUMP
           </text>
@@ -206,7 +206,7 @@ function SpongeBallDiagram() {
             <motion.circle
               key={`ball-${i}`}
               r="5"
-              fill="#F59E0B"
+              fill="#A83232"
               filter="url(#glow)"
               initial={{ cx: 84, cy: y }}
               animate={{ cx: [84, width - 84] }}
@@ -225,7 +225,7 @@ function SpongeBallDiagram() {
           <motion.circle
             key={`ret-${i}`}
             r="4"
-            fill="#F59E0B"
+            fill="#A83232"
             opacity="0.85"
             initial={{ cx: width - 84, cy: 340 }}
             animate={{ cx: [width - 84, 84] }}

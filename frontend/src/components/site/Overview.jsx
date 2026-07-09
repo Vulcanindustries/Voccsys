@@ -9,7 +9,7 @@ export default function Overview() {
           <div className="overline mb-4">01 / The System</div>
           <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
             Fouling is silent. <br />
-            <span className="text-[#F59E0B]">So is our fix.</span>
+            <span className="text-[#A83232]">So is our fix.</span>
           </h2>
         </div>
         <div className="lg:col-span-8">

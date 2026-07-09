@@ -5,14 +5,15 @@
 @tailwind utilities;
 
 :root {
-    --v-bg: #09090B;
-    --v-surface: #121214;
-    --v-surface-2: #1A1A1D;
-    --v-border: #27272A;
-    --v-amber: #F59E0B;
-    --v-amber-hover: #D97706;
-    --v-text: #FAFAFA;
-    --v-muted: #A1A1AA;
+    --v-bg: #0A0606;
+    --v-surface: #14100F;
+    --v-surface-2: #1C1615;
+    --v-border: #2E2222;
+    --v-amber: #500000;
+    --v-amber-hover: #6B0A0A;
+    --v-accent-light: #A83232;
+    --v-text: #F5EFEB;
+    --v-muted: #A89890;
 }
 
 html, body, #root {
@@ -27,8 +28,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--v-bg);
     background-image:
-        radial-gradient(1200px 600px at 20% -10%, rgba(245, 158, 11, 0.06), transparent 60%),
-        radial-gradient(900px 500px at 100% 30%, rgba(255, 255, 255, 0.03), transparent 60%);
+        radial-gradient(1200px 600px at 20% -10%, rgba(80, 0, 0, 0.35), transparent 60%),
+        radial-gradient(900px 500px at 100% 30%, rgba(168, 50, 50, 0.06), transparent 60%);
     background-attachment: fixed;
 }
 
@@ -60,7 +61,7 @@ body::before {
 
 .v-btn-primary {
     background: var(--v-amber);
-    color: #09090B;
+    color: #F5EFEB;
     padding: 14px 22px;
     font-family: 'Chivo', sans-serif;
     font-weight: 700;
@@ -71,7 +72,7 @@ body::before {
     align-items: center;
     gap: 10px;
 }
-.v-btn-primary:hover { background: var(--v-amber-hover); border-color: var(--v-amber-hover); transform: translateY(-1px); }
+.v-btn-primary:hover { background: var(--v-amber-hover); border-color: var(--v-accent-light); transform: translateY(-1px); }
 
 .v-btn-secondary {
     background: transparent;
@@ -157,19 +158,19 @@ body::before {
     appearance: none;
     width: 16px;
     height: 22px;
-    background: #F59E0B;
-    border: 1px solid #09090B;
+    background: #500000;
+    border: 1px solid #0A0606;
     cursor: grab;
     border-radius: 0;
-    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+    box-shadow: 0 0 0 2px rgba(168, 50, 50, 0.25);
     transition: transform 120ms ease;
 }
 .roi-range::-webkit-slider-thumb:active { cursor: grabbing; transform: scaleY(1.1); }
 .roi-range::-moz-range-thumb {
     width: 16px;
     height: 22px;
-    background: #F59E0B;
-    border: 1px solid #09090B;
+    background: #500000;
+    border: 1px solid #0A0606;
     border-radius: 0;
     cursor: grab;
 }
@@ -179,29 +180,29 @@ body::before {
     border: none;
 }
 
-::selection { background: var(--v-amber); color: #09090B; }
+::selection { background: var(--v-amber); color: #F5EFEB; }
 
 @layer base {
     :root {
-        --background: 240 6% 6%;
-        --foreground: 0 0% 98%;
-        --card: 240 5% 8%;
-        --card-foreground: 0 0% 98%;
-        --popover: 240 5% 8%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 38 92% 50%;
-        --primary-foreground: 0 0% 4%;
-        --secondary: 240 4% 12%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 240 4% 14%;
-        --muted-foreground: 240 5% 65%;
-        --accent: 38 92% 50%;
-        --accent-foreground: 0 0% 4%;
+        --background: 0 30% 3%;
+        --foreground: 30 25% 94%;
+        --card: 0 15% 7%;
+        --card-foreground: 30 25% 94%;
+        --popover: 0 15% 7%;
+        --popover-foreground: 30 25% 94%;
+        --primary: 0 100% 16%;
+        --primary-foreground: 30 25% 94%;
+        --secondary: 0 12% 11%;
+        --secondary-foreground: 30 25% 94%;
+        --muted: 0 10% 13%;
+        --muted-foreground: 20 8% 62%;
+        --accent: 0 100% 16%;
+        --accent-foreground: 30 25% 94%;
         --destructive: 0 84% 60%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 240 4% 15%;
-        --input: 240 4% 15%;
-        --ring: 38 92% 50%;
+        --destructive-foreground: 30 25% 94%;
+        --border: 0 15% 15%;
+        --input: 0 15% 15%;
+        --ring: 0 60% 35%;
         --radius: 0.125rem;
     }
 }

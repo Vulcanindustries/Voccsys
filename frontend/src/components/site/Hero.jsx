@@ -25,8 +25,8 @@ export default function Hero() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-8"
             >
-              <span className="w-8 h-[1px] bg-[#F59E0B]" />
-              <span className="overline text-[#F59E0B]">
+              <span className="w-8 h-[1px] bg-[#A83232]" />
+              <span className="overline text-[#A83232]">
                 Patented · Online Cleaning · Zero Shutdown
               </span>
             </motion.div>
@@ -39,7 +39,7 @@ export default function Hero() {
               className="font-display font-black tracking-[-0.045em] text-white leading-[0.95] text-5xl sm:text-6xl lg:text-[86px]"
             >
               Clean condensers <br className="hidden sm:block" />
-              <span className="text-[#F59E0B]">while the plant runs.</span>
+              <span className="text-[#A83232]">while the plant runs.</span>
             </motion.h1>
 
             <motion.p
@@ -84,7 +84,7 @@ export default function Hero() {
                 <div key={i} className="border-t border-[#27272A] pt-4" data-testid={`hero-stat-${i}`}>
                   <div className="font-display font-black text-3xl lg:text-4xl text-white leading-none">
                     {s.k}
-                    <span className="text-[#F59E0B] text-xl align-top ml-1">{s.u}</span>
+                    <span className="text-[#A83232] text-xl align-top ml-1">{s.u}</span>
                   </div>
                   <div className="mt-2 text-xs uppercase tracking-[0.18em] text-[#A1A1AA]">
                     {s.l}

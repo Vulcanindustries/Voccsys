@@ -60,7 +60,7 @@ export default function Contact() {
           <div className="overline mb-4">06 / Request a Demo</div>
           <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
             Send us your condenser. <br />
-            <span className="text-[#F59E0B]">We&apos;ll size a system.</span>
+            <span className="text-[#A83232]">We&apos;ll size a system.</span>
           </h2>
           <p className="mt-6 text-[#A1A1AA] leading-relaxed max-w-md">
             Share your plant details and one of our engineers will get back with a tailored
@@ -197,7 +197,7 @@ function Field({ label, required, className = "", children }) {
     <label className={`block ${className}`}>
       <span className="overline block mb-2">
         {label}
-        {required && <span className="text-[#F59E0B] ml-1">*</span>}
+        {required && <span className="text-[#A83232] ml-1">*</span>}
       </span>
       {children}
     </label>
@@ -208,11 +208,11 @@ function ContactLine({ icon: Icon, label, value, href, testid }) {
   const inner = (
     <div className="flex items-start gap-4 group">
       <div className="w-10 h-10 border border-[#27272A] flex items-center justify-center shrink-0">
-        <Icon size={16} strokeWidth={1.5} className="text-[#F59E0B]" />
+        <Icon size={16} strokeWidth={1.5} className="text-[#A83232]" />
       </div>
       <div>
         <div className="overline">{label}</div>
-        <div className="mt-1 text-white text-sm group-hover:text-[#F59E0B] transition-colors break-all">
+        <div className="mt-1 text-white text-sm group-hover:text-[#A83232] transition-colors break-all">
           {value}
         </div>
       </div>

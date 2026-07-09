@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3">
-              <span className="inline-block w-2 h-6 bg-[#F59E0B]" />
+              <span className="inline-block w-2 h-6 bg-[#A83232]" />
               <span className="font-display font-black tracking-[-0.04em] text-2xl text-white">
                 VOCCSYS
               </span>
@@ -22,11 +22,11 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <div className="overline mb-4">Explore</div>
             <ul className="space-y-2 text-sm text-[#D4D4D8]">
-              <li><a href="#overview" className="hover:text-[#F59E0B] transition-colors">The system</a></li>
-              <li><a href="#process" className="hover:text-[#F59E0B] transition-colors">How it works</a></li>
-              <li><a href="#benefits" className="hover:text-[#F59E0B] transition-colors">ROI &amp; Benefits</a></li>
-              <li><a href="#specs" className="hover:text-[#F59E0B] transition-colors">Technical specs</a></li>
-              <li><a href="#industries" className="hover:text-[#F59E0B] transition-colors">Industries served</a></li>
+              <li><a href="#overview" className="hover:text-[#A83232] transition-colors">The system</a></li>
+              <li><a href="#process" className="hover:text-[#A83232] transition-colors">How it works</a></li>
+              <li><a href="#benefits" className="hover:text-[#A83232] transition-colors">ROI &amp; Benefits</a></li>
+              <li><a href="#specs" className="hover:text-[#A83232] transition-colors">Technical specs</a></li>
+              <li><a href="#industries" className="hover:text-[#A83232] transition-colors">Industries served</a></li>
             </ul>
           </div>
 
@@ -36,7 +36,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:contactus@vulcanindustriesindia.com"
-                  className="hover:text-[#F59E0B] transition-colors break-all"
+                  className="hover:text-[#A83232] transition-colors break-all"
                 >
                   contactus@vulcanindustriesindia.com
                 </a>

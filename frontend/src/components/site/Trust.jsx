@@ -37,7 +37,7 @@ export default function Trust() {
     <section id="trust" data-testid="trust-section" className="relative bg-[#0B0B0D]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
         <div className="flex items-center gap-3 mb-6">
-          <span className="w-8 h-[1px] bg-[#F59E0B]" />
+          <span className="w-8 h-[1px] bg-[#A83232]" />
           <span className="overline">Trusted across industry</span>
         </div>
 
@@ -74,7 +74,7 @@ export default function Trust() {
               data-testid={`testimonial-${i}`}
               className="border border-[#27272A] bg-[#121214] p-7 flex flex-col"
             >
-              <div className="text-[#F59E0B] font-display font-black text-4xl leading-none">&ldquo;</div>
+              <div className="text-[#A83232] font-display font-black text-4xl leading-none">&ldquo;</div>
               <p className="mt-4 text-[#D4D4D8] text-sm leading-relaxed flex-1">{t.q}</p>
               <div className="dashed-divider my-4" />
               <div className="text-xs uppercase tracking-[0.18em] text-white">{t.who}</div>
