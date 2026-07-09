@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight, PlayCircle, Download } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HERO_IMG =
@@ -76,6 +76,14 @@ export default function Hero() {
               >
                 <PlayCircle size={18} /> See the Process
               </button>
+              <a
+                href="/voccsys-brochure.pdf"
+                download
+                data-testid="hero-cta-brochure"
+                className="v-btn-secondary"
+              >
+                <Download size={18} /> Download Brochure
+              </a>
             </motion.div>
 
             <div className="mt-14 grid grid-cols-3 gap-6 max-w-2xl">

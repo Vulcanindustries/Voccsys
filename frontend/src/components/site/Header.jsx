@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
 const NAV = [
   { id: "overview", label: "System" },
@@ -60,6 +60,14 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
+          <a
+            href="/voccsys-brochure.pdf"
+            download
+            data-testid="header-cta-brochure"
+            className="v-btn-secondary text-sm"
+          >
+            <Download size={16} /> Brochure
+          </a>
           <button
             data-testid="header-cta-demo"
             onClick={() => go("contact")}
@@ -99,6 +107,14 @@ export default function Header() {
             >
               Request Demo
             </button>
+            <a
+              href="/voccsys-brochure.pdf"
+              download
+              data-testid="mobile-cta-brochure"
+              className="v-btn-secondary mt-3 justify-center"
+            >
+              <Download size={16} /> Download Brochure
+            </a>
           </div>
         </div>
       )}
