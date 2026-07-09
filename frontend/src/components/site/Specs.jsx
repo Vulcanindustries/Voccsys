@@ -41,39 +41,39 @@ const SPEC_GROUPS = [
 
 export default function Specs() {
   return (
-    <section id="specs" data-testid="specs-section" className="dark-block relative bg-[#2D3130] text-[#F2F1ED]">
+    <section id="specs" data-testid="specs-section" className="relative bg-[#121216] text-[#E5E5EA]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-14">
           <div className="lg:col-span-6">
             <div className="overline mb-4">04 / Technical Specifications</div>
             <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
-              Engineered <span className="text-[#C85A17]">to your condenser</span>, not the other way around.
+              Engineered <span className="text-[#500000]">to your condenser</span>, not the other way around.
             </h2>
           </div>
           <div className="lg:col-span-6">
-            <p className="text-[#B8B9B4] max-w-xl">
+            <p className="text-[#A0A0AC] max-w-xl">
               Every VOCCSYS unit is sized against your condenser&apos;s tube geometry, water
               chemistry and operating envelope. Below is a representative baseline.
             </p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-0 border border-[#40453F]">
+        <div className="grid md:grid-cols-2 gap-0 border border-[#2E2E38]">
           {SPEC_GROUPS.map((g, gi) => (
             <div
               key={g.title}
               data-testid={`spec-group-${gi}`}
-              className={`bg-[#363A38] p-8 ${gi % 2 === 0 ? "md:border-r" : ""} ${gi < 2 ? "border-b" : ""} border-[#40453F]`}
+              className={`bg-[#1A1A1F] p-8 ${gi % 2 === 0 ? "md:border-r" : ""} ${gi < 2 ? "border-b" : ""} border-[#2E2E38]`}
             >
               <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-[#C85A17]" />
+                <span className="w-2 h-2 bg-[#500000]" />
                 <div className="overline">{g.title}</div>
               </div>
 
-              <dl className="mt-6 divide-y divide-[#525651]">
+              <dl className="mt-6 divide-y divide-[#26262F]">
                 {g.rows.map(([k, v]) => (
                   <div key={k} className="py-3 grid grid-cols-5 gap-4">
-                    <dt className="col-span-2 text-sm text-[#B8B9B4]">{k}</dt>
+                    <dt className="col-span-2 text-sm text-[#A0A0AC]">{k}</dt>
                     <dd className="col-span-3 text-sm text-white font-mono">{v}</dd>
                   </div>
                 ))}

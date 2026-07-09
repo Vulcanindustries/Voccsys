@@ -9,11 +9,11 @@ const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior:
 
 export default function Hero() {
   return (
-    <section id="top" data-testid="hero-section" className="dark-block relative overflow-hidden text-[#F2F1ED]">
+    <section id="top" data-testid="hero-section" className="relative overflow-hidden text-[#E5E5EA]">
       <div className="absolute inset-0 -z-10">
         <img src={HERO_IMG} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-[#2D3130]/80" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2D3130]/40 via-transparent to-[#2D3130]" />
+        <div className="absolute inset-0 bg-[#121216]/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#121216]/40 via-transparent to-[#121216]" />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-24 pb-32 lg:pt-32 lg:pb-40">
@@ -25,8 +25,8 @@ export default function Hero() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-8"
             >
-              <span className="w-8 h-[1px] bg-[#C85A17]" />
-              <span className="overline text-[#C85A17]">
+              <span className="w-8 h-[1px] bg-[#500000]" />
+              <span className="overline text-[#500000]">
                 Patented · Online Cleaning · Zero Shutdown
               </span>
             </motion.div>
@@ -39,14 +39,14 @@ export default function Hero() {
               className="font-display font-black tracking-[-0.045em] text-white leading-[0.95] text-5xl sm:text-6xl lg:text-[86px]"
             >
               Clean condensers <br className="hidden sm:block" />
-              <span className="text-[#C85A17]">while the plant runs.</span>
+              <span className="text-[#500000]">while the plant runs.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="mt-8 text-lg lg:text-xl text-[#F2F1ED] max-w-2xl leading-relaxed"
+              className="mt-8 text-lg lg:text-xl text-[#E5E5EA] max-w-2xl leading-relaxed"
             >
               VOCCSYS is Vulcan Industries&apos; online condenser tube cleaning system — an
               engineered ball-circulation loop that scrubs scale &amp; biofilm continuously,
@@ -81,12 +81,12 @@ export default function Hero() {
                 { k: "1–3%", u: "", l: "Heat rate recovery" },
                 { k: "<12", u: "mo", l: "Typical payback" },
               ].map((s, i) => (
-                <div key={i} className="border-t border-[#40453F] pt-4" data-testid={`hero-stat-${i}`}>
+                <div key={i} className="border-t border-[#2E2E38] pt-4" data-testid={`hero-stat-${i}`}>
                   <div className="font-display font-black text-3xl lg:text-4xl text-white leading-none">
                     {s.k}
-                    <span className="text-[#C85A17] text-xl align-top ml-1">{s.u}</span>
+                    <span className="text-[#500000] text-xl align-top ml-1">{s.u}</span>
                   </div>
-                  <div className="mt-2 text-xs uppercase tracking-[0.18em] text-[#B8B9B4]">
+                  <div className="mt-2 text-xs uppercase tracking-[0.18em] text-[#A0A0AC]">
                     {s.l}
                   </div>
                 </div>
@@ -95,16 +95,16 @@ export default function Hero() {
           </div>
 
           <div className="lg:col-span-4 hidden lg:flex flex-col justify-end">
-            <div className="border border-[#40453F] bg-[#363A38]/70 backdrop-blur p-6">
+            <div className="border border-[#2E2E38] bg-[#1A1A1F]/70 backdrop-blur p-6">
               <div className="overline mb-3">System Snapshot</div>
-              <ul className="tick-list space-y-3 text-sm text-[#F2F1ED]">
+              <ul className="tick-list space-y-3 text-sm text-[#E5E5EA]">
                 <li>Continuous sponge-ball loop through condenser tubes</li>
                 <li>Ball collector + strainer with auto-reinjection</li>
                 <li>PLC control + real-time differential pressure monitoring</li>
                 <li>Compatible with 18 – 32 mm tube ID configurations</li>
               </ul>
               <div className="dashed-divider my-5" />
-              <div className="flex items-center justify-between text-xs text-[#B8B9B4]">
+              <div className="flex items-center justify-between text-xs text-[#A0A0AC]">
                 <span>Model</span>
                 <span className="font-mono text-white">VCS-Series 500 / 1000 / 2000</span>
               </div>

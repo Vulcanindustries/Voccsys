@@ -63,20 +63,20 @@ export default function ROICalculator() {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="calculator" data-testid="roi-calculator-section" className="dark-block relative bg-[#2D3130] text-[#F2F1ED]">
+    <section id="calculator" data-testid="roi-calculator-section" className="relative bg-[#121216] text-[#E5E5EA]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-14">
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-4">
-              <Calculator size={16} strokeWidth={1.5} className="text-[#C85A17]" />
+              <Calculator size={16} strokeWidth={1.5} className="text-[#500000]" />
               <span className="overline">Interactive · ROI Calculator</span>
             </div>
             <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
-              Estimate your <span className="text-[#C85A17]">annual savings</span> in 20 seconds.
+              Estimate your <span className="text-[#500000]">annual savings</span> in 20 seconds.
             </h2>
           </div>
           <div className="lg:col-span-6">
-            <p className="text-[#B8B9B4] max-w-xl">
+            <p className="text-[#A0A0AC] max-w-xl">
               Move the sliders to match your plant. We&apos;ll show recoverable fuel losses,
               indicative system capex &amp; expected payback. Final numbers depend on your actual
               water chemistry &amp; tube condition.
@@ -84,11 +84,11 @@ export default function ROICalculator() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-0 border border-[#40453F]">
+        <div className="grid lg:grid-cols-12 gap-0 border border-[#2E2E38]">
           {/* Inputs */}
           <div
             data-testid="roi-inputs"
-            className="lg:col-span-6 bg-[#363A38] p-8 lg:p-10 lg:border-r border-b lg:border-b-0 border-[#40453F]"
+            className="lg:col-span-6 bg-[#1A1A1F] p-8 lg:p-10 lg:border-r border-b lg:border-b-0 border-[#2E2E38]"
           >
             <div className="overline mb-6">Your plant</div>
 
@@ -135,8 +135,8 @@ export default function ROICalculator() {
               format={(v) => v.toFixed(1)}
             />
 
-            <div className="mt-8 flex items-start gap-2 text-xs text-[#8A8E8C]">
-              <Info size={14} strokeWidth={1.5} className="text-[#8A8E8C] mt-[2px]" />
+            <div className="mt-8 flex items-start gap-2 text-xs text-[#8A8A96]">
+              <Info size={14} strokeWidth={1.5} className="text-[#8A8A96] mt-[2px]" />
               <p>
                 Model uses SFC of {SFC_T_PER_MWH} t/MWh (typical sub-critical thermal). For gas /
                 nuclear / HVAC, use effective fuel-equivalent cost.
@@ -147,7 +147,7 @@ export default function ROICalculator() {
           {/* Results */}
           <div
             data-testid="roi-results"
-            className="lg:col-span-6 bg-[#363A38] p-8 lg:p-10 relative overflow-hidden"
+            className="lg:col-span-6 bg-[#1A1A1F] p-8 lg:p-10 relative overflow-hidden"
           >
             <div className="overline mb-6">Indicative outcome</div>
 
@@ -156,15 +156,15 @@ export default function ROICalculator() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35 }}
-              className="border-l-2 border-[#C85A17] pl-5"
+              className="border-l-2 border-[#500000] pl-5"
               data-testid="roi-annual-savings"
             >
               <div className="overline">Recoverable annual losses</div>
               <div className="mt-2 font-display font-black text-white text-5xl lg:text-6xl tracking-[-0.04em] leading-none">
                 {inCr(result.annualSavings)}
-                <span className="ml-3 text-[#C85A17] text-lg font-mono align-top">/ year</span>
+                <span className="ml-3 text-[#500000] text-lg font-mono align-top">/ year</span>
               </div>
-              <div className="mt-3 text-sm text-[#B8B9B4]">
+              <div className="mt-3 text-sm text-[#A0A0AC]">
                 Approx {currency(result.annualSavings)} — recovered continuously by VOCCSYS.
               </div>
             </motion.div>
@@ -211,7 +211,7 @@ export default function ROICalculator() {
                 Get an engineered quote
                 <ArrowDown size={16} />
               </button>
-              <span className="text-xs text-[#8A8E8C]">
+              <span className="text-xs text-[#8A8A96]">
                 We&apos;ll size the system against your actual condenser drawings.
               </span>
             </div>
@@ -228,9 +228,9 @@ function SliderField({ label, unit, value, min, max, step, onChange, testid, for
   return (
     <div className="mb-7">
       <div className="flex items-baseline justify-between mb-2">
-        <span className="text-sm text-[#F2F1ED] font-medium">{label}</span>
+        <span className="text-sm text-[#E5E5EA] font-medium">{label}</span>
         <span className="font-display font-bold text-white text-lg tracking-tight" data-testid={`${testid}-value`}>
-          {shown} <span className="text-[#C85A17] text-xs font-mono ml-1">{unit}</span>
+          {shown} <span className="text-[#500000] text-xs font-mono ml-1">{unit}</span>
         </span>
       </div>
       <input
@@ -243,7 +243,7 @@ function SliderField({ label, unit, value, min, max, step, onChange, testid, for
         data-testid={testid}
         className="roi-range w-full"
       />
-      <div className="flex justify-between mt-1 text-[10px] font-mono text-[#8A8E8C]">
+      <div className="flex justify-between mt-1 text-[10px] font-mono text-[#8A8A96]">
         <span>{format ? format(min) : min}</span>
         <span>{format ? format(max) : max}</span>
       </div>
@@ -253,12 +253,12 @@ function SliderField({ label, unit, value, min, max, step, onChange, testid, for
 
 function ResultTile({ label, value, sub, testid }) {
   return (
-    <div className="border border-[#40453F] bg-[#363A38] p-5" data-testid={testid}>
+    <div className="border border-[#2E2E38] bg-[#1A1A1F] p-5" data-testid={testid}>
       <div className="overline">{label}</div>
       <div className="mt-2 font-display font-bold text-white text-lg lg:text-xl tracking-tight break-all">
         {value}
       </div>
-      <div className="mt-1 text-[11px] text-[#8A8E8C]">{sub}</div>
+      <div className="mt-1 text-[11px] text-[#8A8A96]">{sub}</div>
     </div>
   );
 }

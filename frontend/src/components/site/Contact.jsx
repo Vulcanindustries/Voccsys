@@ -54,15 +54,15 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" data-testid="contact-section" className="relative bg-[#F2F1ED] text-[#1F1F22]">
+    <section id="contact" data-testid="contact-section" className="relative bg-[#121216] text-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">
           <div className="overline mb-4">06 / Request a Demo</div>
-          <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-[#1F1F22] leading-[1.02]">
+          <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
             Send us your condenser. <br />
-            <span className="text-[#C85A17]">We&apos;ll size a system.</span>
+            <span className="text-[#500000]">We&apos;ll size a system.</span>
           </h2>
-          <p className="mt-6 text-[#6B6E6C] leading-relaxed max-w-md">
+          <p className="mt-6 text-[#A0A0AC] leading-relaxed max-w-md">
             Share your plant details and one of our engineers will get back with a tailored
             technical proposal — typically within 2 working days.
           </p>
@@ -94,7 +94,7 @@ export default function Contact() {
           onSubmit={submit}
           noValidate
           data-testid="contact-form"
-          className="lg:col-span-7 border border-[#D9D6CE] bg-white p-6 lg:p-10"
+          className="lg:col-span-7 border border-[#2E2E38] bg-[#1A1A1F] p-6 lg:p-10"
         >
           <div className="grid sm:grid-cols-2 gap-5">
             <Field label="Full name" required>
@@ -172,7 +172,7 @@ export default function Contact() {
           <div className="dashed-divider my-6" />
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <p className="text-xs text-[#8A8A80] max-w-md">
+            <p className="text-xs text-[#8A8A96] max-w-md">
               By submitting, you agree that Vulcan Industries may contact you about VOCCSYS. We
               never share your details.
             </p>
@@ -197,7 +197,7 @@ function Field({ label, required, className = "", children }) {
     <label className={`block ${className}`}>
       <span className="overline block mb-2">
         {label}
-        {required && <span className="text-[#C85A17] ml-1">*</span>}
+        {required && <span className="text-[#500000] ml-1">*</span>}
       </span>
       {children}
     </label>
@@ -207,12 +207,12 @@ function Field({ label, required, className = "", children }) {
 function ContactLine({ icon: Icon, label, value, href, testid }) {
   const inner = (
     <div className="flex items-start gap-4 group">
-      <div className="w-10 h-10 border border-[#D9D6CE] flex items-center justify-center shrink-0">
-        <Icon size={16} strokeWidth={1.5} className="text-[#C85A17]" />
+      <div className="w-10 h-10 border border-[#2E2E38] flex items-center justify-center shrink-0">
+        <Icon size={16} strokeWidth={1.5} className="text-[#500000]" />
       </div>
       <div>
         <div className="overline">{label}</div>
-        <div className="mt-1 text-[#1F1F22] text-sm group-hover:text-[#C85A17] transition-colors break-all">
+        <div className="mt-1 text-white text-sm group-hover:text-[#500000] transition-colors break-all">
           {value}
         </div>
       </div>
