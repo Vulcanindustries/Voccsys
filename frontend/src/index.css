@@ -5,15 +5,15 @@
 @tailwind utilities;
 
 :root {
-    --v-bg: #0A0606;
-    --v-surface: #14100F;
-    --v-surface-2: #1C1615;
-    --v-border: #2E2222;
+    --v-bg: #2B2B35;
+    --v-surface: #33333E;
+    --v-surface-2: #3B3B47;
+    --v-border: #4A4A55;
     --v-amber: #500000;
     --v-amber-hover: #6B0A0A;
-    --v-accent-light: #A83232;
-    --v-text: #F5EFEB;
-    --v-muted: #A89890;
+    --v-accent-light: #500000;
+    --v-text: #FAFAFA;
+    --v-muted: #A0A0AC;
 }
 
 html, body, #root {
@@ -28,8 +28,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--v-bg);
     background-image:
-        radial-gradient(1200px 600px at 20% -10%, rgba(80, 0, 0, 0.35), transparent 60%),
-        radial-gradient(900px 500px at 100% 30%, rgba(168, 50, 50, 0.06), transparent 60%);
+        radial-gradient(1200px 600px at 20% -10%, rgba(80, 0, 0, 0.18), transparent 60%),
+        radial-gradient(900px 500px at 100% 30%, rgba(255, 255, 255, 0.03), transparent 60%);
     background-attachment: fixed;
 }
 
@@ -61,7 +61,7 @@ body::before {
 
 .v-btn-primary {
     background: var(--v-amber);
-    color: #F5EFEB;
+    color: #FAFAFA;
     padding: 14px 22px;
     font-family: 'Chivo', sans-serif;
     font-weight: 700;
@@ -72,7 +72,7 @@ body::before {
     align-items: center;
     gap: 10px;
 }
-.v-btn-primary:hover { background: var(--v-amber-hover); border-color: var(--v-accent-light); transform: translateY(-1px); }
+.v-btn-primary:hover { background: var(--v-amber-hover); border-color: var(--v-amber-hover); transform: translateY(-1px); }
 
 .v-btn-secondary {
     background: transparent;
@@ -148,7 +148,7 @@ body::before {
     -webkit-appearance: none;
     appearance: none;
     height: 4px;
-    background: #27272A;
+    background: #4A4A55;
     outline: none;
     border-radius: 0;
     cursor: pointer;
@@ -159,10 +159,10 @@ body::before {
     width: 16px;
     height: 22px;
     background: #500000;
-    border: 1px solid #0A0606;
+    border: 1px solid #2B2B35;
     cursor: grab;
     border-radius: 0;
-    box-shadow: 0 0 0 2px rgba(168, 50, 50, 0.25);
+    box-shadow: 0 0 0 2px rgba(80, 0, 0, 0.35);
     transition: transform 120ms ease;
 }
 .roi-range::-webkit-slider-thumb:active { cursor: grabbing; transform: scaleY(1.1); }
@@ -170,39 +170,39 @@ body::before {
     width: 16px;
     height: 22px;
     background: #500000;
-    border: 1px solid #0A0606;
+    border: 1px solid #2B2B35;
     border-radius: 0;
     cursor: grab;
 }
 .roi-range::-moz-range-track {
-    background: #27272A;
+    background: #4A4A55;
     height: 4px;
     border: none;
 }
 
-::selection { background: var(--v-amber); color: #F5EFEB; }
+::selection { background: var(--v-amber); color: #FAFAFA; }
 
 @layer base {
     :root {
-        --background: 0 30% 3%;
-        --foreground: 30 25% 94%;
-        --card: 0 15% 7%;
-        --card-foreground: 30 25% 94%;
-        --popover: 0 15% 7%;
-        --popover-foreground: 30 25% 94%;
+        --background: 240 10% 19%;
+        --foreground: 0 0% 98%;
+        --card: 240 8% 22%;
+        --card-foreground: 0 0% 98%;
+        --popover: 240 8% 22%;
+        --popover-foreground: 0 0% 98%;
         --primary: 0 100% 16%;
-        --primary-foreground: 30 25% 94%;
-        --secondary: 0 12% 11%;
-        --secondary-foreground: 30 25% 94%;
-        --muted: 0 10% 13%;
-        --muted-foreground: 20 8% 62%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 240 8% 24%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 6% 26%;
+        --muted-foreground: 240 5% 68%;
         --accent: 0 100% 16%;
-        --accent-foreground: 30 25% 94%;
+        --accent-foreground: 0 0% 98%;
         --destructive: 0 84% 60%;
-        --destructive-foreground: 30 25% 94%;
-        --border: 0 15% 15%;
-        --input: 0 15% 15%;
-        --ring: 0 60% 35%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 7% 30%;
+        --input: 240 7% 30%;
+        --ring: 0 100% 25%;
         --radius: 0.125rem;
     }
 }

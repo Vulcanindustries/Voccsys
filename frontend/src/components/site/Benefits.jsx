@@ -54,7 +54,7 @@ export default function Benefits() {
             </h2>
           </div>
           <div className="lg:col-span-6">
-            <p className="text-[#A1A1AA] max-w-xl">
+            <p className="text-[#A0A0AC] max-w-xl">
               The value of VOCCSYS is neither theoretical nor marginal — it is measurable at the
               main condenser vacuum, at the turbine heat rate, and on your fuel invoice.
             </p>
@@ -62,7 +62,7 @@ export default function Benefits() {
         </div>
 
         {/* Metric grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 border border-[#27272A]">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 border border-[#4A4A55]">
           {METRICS.map((m, i) => (
             <motion.div
               key={i}
@@ -71,15 +71,15 @@ export default function Benefits() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
               data-testid={`metric-${i}`}
-              className={`p-8 bg-[#121214] border-[#27272A] ${i % 2 === 0 ? "sm:border-r" : ""} lg:border-r ${i === 3 ? "lg:border-r-0" : ""} border-b sm:border-b ${i >= 2 ? "sm:border-b-0" : ""} lg:border-b-0`}
+              className={`p-8 bg-[#33333E] border-[#4A4A55] ${i % 2 === 0 ? "sm:border-r" : ""} lg:border-r ${i === 3 ? "lg:border-r-0" : ""} border-b sm:border-b ${i >= 2 ? "sm:border-b-0" : ""} lg:border-b-0`}
             >
               <div className="font-display font-black text-5xl lg:text-6xl text-white leading-none tracking-[-0.04em]">
                 {m.n}
-                {m.suffix && <span className="text-[#A83232] text-2xl align-top ml-1">{m.suffix}</span>}
+                {m.suffix && <span className="text-[#500000] text-2xl align-top ml-1">{m.suffix}</span>}
               </div>
               <div className="dashed-divider my-4" />
               <div className="text-sm font-medium text-white">{m.label}</div>
-              <div className="mt-1 text-xs text-[#A1A1AA]">{m.sub}</div>
+              <div className="mt-1 text-xs text-[#A0A0AC]">{m.sub}</div>
             </motion.div>
           ))}
         </div>
@@ -98,11 +98,11 @@ export default function Benefits() {
                 data-testid={`benefit-${i}`}
                 className="v-card p-7"
               >
-                <div className="w-11 h-11 border border-[#27272A] flex items-center justify-center">
-                  <Icon size={20} strokeWidth={1.5} className="text-[#A83232]" />
+                <div className="w-11 h-11 border border-[#4A4A55] flex items-center justify-center">
+                  <Icon size={20} strokeWidth={1.5} className="text-[#500000]" />
                 </div>
                 <h3 className="mt-6 font-display font-bold text-xl text-white">{b.t}</h3>
-                <p className="mt-2 text-sm text-[#A1A1AA] leading-relaxed">{b.d}</p>
+                <p className="mt-2 text-sm text-[#A0A0AC] leading-relaxed">{b.d}</p>
               </motion.div>
             );
           })}

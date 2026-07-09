@@ -20,11 +20,11 @@ export default function Industries() {
             <div className="overline mb-4">05 / Industries Served</div>
             <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-white leading-[1.02]">
               Wherever tubes foul, <br />
-              <span className="text-[#A83232]">VOCCSYS pays back.</span>
+              <span className="text-[#500000]">VOCCSYS pays back.</span>
             </h2>
           </div>
           <div className="lg:col-span-6">
-            <p className="text-[#A1A1AA] max-w-xl">
+            <p className="text-[#A0A0AC] max-w-xl">
               Deployed across some of the toughest industrial cooling loops in India and abroad.
               Every install is engineered to the site&apos;s water chemistry &amp; tube bundle.
             </p>
@@ -45,15 +45,15 @@ export default function Industries() {
                 className="v-card p-7 flex flex-col"
               >
                 <div className="flex items-start justify-between">
-                  <div className="w-11 h-11 border border-[#27272A] flex items-center justify-center">
-                    <Icon size={20} strokeWidth={1.5} className="text-[#A83232]" />
+                  <div className="w-11 h-11 border border-[#4A4A55] flex items-center justify-center">
+                    <Icon size={20} strokeWidth={1.5} className="text-[#500000]" />
                   </div>
-                  <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#A83232] border border-[#A83232]/30 px-2 py-1">
+                  <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#500000] border border-[#500000]/30 px-2 py-1">
                     {it.tag}
                   </span>
                 </div>
                 <h3 className="mt-6 font-display font-bold text-xl text-white">{it.t}</h3>
-                <p className="mt-2 text-sm text-[#A1A1AA] leading-relaxed flex-1">{it.d}</p>
+                <p className="mt-2 text-sm text-[#A0A0AC] leading-relaxed flex-1">{it.d}</p>
               </motion.div>
             );
           })}

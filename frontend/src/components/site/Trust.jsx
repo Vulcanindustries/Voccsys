@@ -34,10 +34,10 @@ export default function Trust() {
   const doubled = [...CLIENTS, ...CLIENTS];
 
   return (
-    <section id="trust" data-testid="trust-section" className="relative bg-[#0B0B0D]">
+    <section id="trust" data-testid="trust-section" className="relative bg-[#2B2B35]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
         <div className="flex items-center gap-3 mb-6">
-          <span className="w-8 h-[1px] bg-[#A83232]" />
+          <span className="w-8 h-[1px] bg-[#500000]" />
           <span className="overline">Trusted across industry</span>
         </div>
 
@@ -46,7 +46,7 @@ export default function Trust() {
         </h2>
 
         {/* Marquee logos */}
-        <div className="mt-12 border-y border-[#27272A] py-6 overflow-hidden">
+        <div className="mt-12 border-y border-[#4A4A55] py-6 overflow-hidden">
           <div className="marquee gap-16 whitespace-nowrap">
             {doubled.map((c, i) => {
               const Icon = c.icon;
@@ -56,8 +56,8 @@ export default function Trust() {
                   data-testid={`client-logo-${i}`}
                   className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity shrink-0"
                 >
-                  <Icon size={18} strokeWidth={1.5} className="text-[#A1A1AA]" />
-                  <span className="font-display font-bold text-sm tracking-[0.15em] text-[#D4D4D8]">
+                  <Icon size={18} strokeWidth={1.5} className="text-[#A0A0AC]" />
+                  <span className="font-display font-bold text-sm tracking-[0.15em] text-[#E5E5EA]">
                     {c.name}
                   </span>
                 </div>
@@ -72,13 +72,13 @@ export default function Trust() {
             <div
               key={i}
               data-testid={`testimonial-${i}`}
-              className="border border-[#27272A] bg-[#121214] p-7 flex flex-col"
+              className="border border-[#4A4A55] bg-[#33333E] p-7 flex flex-col"
             >
-              <div className="text-[#A83232] font-display font-black text-4xl leading-none">&ldquo;</div>
-              <p className="mt-4 text-[#D4D4D8] text-sm leading-relaxed flex-1">{t.q}</p>
+              <div className="text-[#500000] font-display font-black text-4xl leading-none">&ldquo;</div>
+              <p className="mt-4 text-[#E5E5EA] text-sm leading-relaxed flex-1">{t.q}</p>
               <div className="dashed-divider my-4" />
               <div className="text-xs uppercase tracking-[0.18em] text-white">{t.who}</div>
-              <div className="text-xs text-[#A1A1AA] mt-1">{t.org}</div>
+              <div className="text-xs text-[#A0A0AC] mt-1">{t.org}</div>
             </div>
           ))}
         </div>

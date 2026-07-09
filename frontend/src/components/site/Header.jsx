@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <header
       data-testid="site-header"
-      className={`sticky top-0 z-50 bg-[#09090B] border-b border-[#27272A] ${scrolled ? "shadow-[0_1px_0_0_#27272A]" : ""}`}
+      className={`sticky top-0 z-50 bg-[#2B2B35] border-b border-[#4A4A55] ${scrolled ? "shadow-[0_1px_0_0_#4A4A55]" : ""}`}
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between">
         <button
@@ -37,11 +37,11 @@ export default function Header() {
           className="flex items-center gap-3 group"
           aria-label="VOCCSYS home"
         >
-          <span className="inline-block w-2 h-6 bg-[#A83232]" />
+          <span className="inline-block w-2 h-6 bg-[#500000]" />
           <span className="font-display font-black tracking-[-0.04em] text-xl text-white">
             VOCCSYS
           </span>
-          <span className="hidden md:inline overline pl-2 border-l border-[#27272A]">
+          <span className="hidden md:inline overline pl-2 border-l border-[#4A4A55]">
             by Vulcan Industries
           </span>
         </button>
@@ -52,7 +52,7 @@ export default function Header() {
               key={n.id}
               onClick={() => go(n.id)}
               data-testid={`nav-${n.id}`}
-              className="text-sm font-medium text-[#A1A1AA] hover:text-white transition-colors"
+              className="text-sm font-medium text-[#A0A0AC] hover:text-white transition-colors"
             >
               {n.label}
             </button>
@@ -71,7 +71,7 @@ export default function Header() {
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden text-white p-2 border border-[#27272A]"
+          className="lg:hidden text-white p-2 border border-[#4A4A55]"
           data-testid="mobile-menu-toggle"
           aria-label="Toggle menu"
         >
@@ -80,14 +80,14 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-[#27272A] bg-[#09090B]" data-testid="mobile-menu">
+        <div className="lg:hidden border-t border-[#4A4A55] bg-[#2B2B35]" data-testid="mobile-menu">
           <div className="px-6 py-4 grid gap-1">
             {NAV.map((n) => (
               <button
                 key={n.id}
                 onClick={() => go(n.id)}
                 data-testid={`mnav-${n.id}`}
-                className="text-left py-3 text-white border-b border-[#1A1A1D] font-display"
+                className="text-left py-3 text-white border-b border-[#3B3B47] font-display"
               >
                 {n.label}
               </button>
