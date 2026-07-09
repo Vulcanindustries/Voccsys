@@ -206,8 +206,8 @@ function Field({ label, required, className = "", children }) {
 
 function ContactLine({ icon: Icon, label, value, href, testid }) {
   const inner = (
-    <div className="flex items-start gap-4 group">
-      <div className="w-10 h-10 border border-[#D9D6CE] flex items-center justify-center shrink-0">
+    <div className="contact-line flex items-start gap-4 group">
+      <div className="v-icon-box w-10 h-10 border border-[#D9D6CE] flex items-center justify-center shrink-0">
         <Icon size={16} strokeWidth={1.5} className="text-[#B45309]" />
       </div>
       <div>

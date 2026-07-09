@@ -68,7 +68,7 @@ export default function ROICalculator() {
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-14">
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-4">
-              <Calculator size={16} strokeWidth={1.5} className="text-[#B45309]" />
+              <Calculator size={16} strokeWidth={1.5} className="text-[#B45309] icon-float" />
               <span className="overline">Interactive · ROI Calculator</span>
             </div>
             <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-[#1F1F22] leading-[1.02]">

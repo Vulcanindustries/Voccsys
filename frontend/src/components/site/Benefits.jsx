@@ -98,7 +98,7 @@ export default function Benefits() {
                 data-testid={`benefit-${i}`}
                 className="v-card p-7"
               >
-                <div className="w-11 h-11 border border-[#D9D6CE] flex items-center justify-center">
+                <div className="v-icon-box w-11 h-11 border border-[#D9D6CE] flex items-center justify-center">
                   <Icon size={20} strokeWidth={1.5} className="text-[#B45309]" />
                 </div>
                 <h3 className="mt-6 font-display font-bold text-xl text-[#1F1F22]">{b.t}</h3>

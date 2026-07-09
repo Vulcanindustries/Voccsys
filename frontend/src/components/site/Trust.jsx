@@ -54,7 +54,7 @@ export default function Trust() {
                 <div
                   key={i}
                   data-testid={`client-logo-${i}`}
-                  className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity shrink-0"
+                  className="marquee-item flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity shrink-0"
                 >
                   <Icon size={18} strokeWidth={1.5} className="text-[#6B6E6C]" />
                   <span className="font-display font-bold text-sm tracking-[0.15em] text-[#3D3F3E]">
