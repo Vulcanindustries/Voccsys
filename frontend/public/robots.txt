@@ -1,0 +1,21 @@
+# robots.txt for VOCCSYS
+User-agent: *
+Allow: /
+
+# Palette preview is an internal design artifact — hide from crawlers
+Disallow: /palette-preview.html
+
+# AI crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://voccsys.vulcanindustriesindia.com/sitemap.xml
