@@ -34,19 +34,19 @@ export default function Trust() {
   const doubled = [...CLIENTS, ...CLIENTS];
 
   return (
-    <section id="trust" data-testid="trust-section" className="relative bg-[#121216]">
+    <section id="trust" data-testid="trust-section" className="relative bg-[#F2F1ED] text-[#1F1F22]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
         <div className="flex items-center gap-3 mb-6">
-          <span className="w-8 h-[1px] bg-[#500000]" />
+          <span className="w-8 h-[1px] bg-[#C85A17]" />
           <span className="overline">Trusted across industry</span>
         </div>
 
-        <h2 className="font-display font-black tracking-[-0.03em] text-3xl lg:text-4xl text-white max-w-3xl">
+        <h2 className="font-display font-black tracking-[-0.03em] text-3xl lg:text-4xl text-[#1F1F22] max-w-3xl">
           Deployed at plants that can&apos;t afford to stop.
         </h2>
 
         {/* Marquee logos */}
-        <div className="mt-12 border-y border-[#2E2E38] py-6 overflow-hidden">
+        <div className="mt-12 border-y border-[#D9D6CE] py-6 overflow-hidden">
           <div className="marquee gap-16 whitespace-nowrap">
             {doubled.map((c, i) => {
               const Icon = c.icon;
@@ -56,8 +56,8 @@ export default function Trust() {
                   data-testid={`client-logo-${i}`}
                   className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity shrink-0"
                 >
-                  <Icon size={18} strokeWidth={1.5} className="text-[#A0A0AC]" />
-                  <span className="font-display font-bold text-sm tracking-[0.15em] text-[#E5E5EA]">
+                  <Icon size={18} strokeWidth={1.5} className="text-[#6B6E6C]" />
+                  <span className="font-display font-bold text-sm tracking-[0.15em] text-[#3D3F3E]">
                     {c.name}
                   </span>
                 </div>
@@ -72,13 +72,13 @@ export default function Trust() {
             <div
               key={i}
               data-testid={`testimonial-${i}`}
-              className="border border-[#2E2E38] bg-[#1A1A1F] p-7 flex flex-col"
+              className="border border-[#D9D6CE] bg-white p-7 flex flex-col"
             >
-              <div className="text-[#500000] font-display font-black text-4xl leading-none">&ldquo;</div>
-              <p className="mt-4 text-[#E5E5EA] text-sm leading-relaxed flex-1">{t.q}</p>
+              <div className="text-[#C85A17] font-display font-black text-4xl leading-none">&ldquo;</div>
+              <p className="mt-4 text-[#3D3F3E] text-sm leading-relaxed flex-1">{t.q}</p>
               <div className="dashed-divider my-4" />
-              <div className="text-xs uppercase tracking-[0.18em] text-white">{t.who}</div>
-              <div className="text-xs text-[#A0A0AC] mt-1">{t.org}</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-[#1F1F22]">{t.who}</div>
+              <div className="text-xs text-[#6B6E6C] mt-1">{t.org}</div>
             </div>
           ))}
         </div>
