@@ -55,7 +55,7 @@ export default function Contact() {
 
   return (
     <section id="contact" data-testid="contact-section" className="relative bg-[#F2F1ED] text-[#1F1F22]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 lg:py-20 grid lg:grid-cols-12 gap-12">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-10 lg:py-14 grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">
           <div className="overline mb-4">06 / Request a Demo</div>
           <h2 className="font-display font-black tracking-[-0.03em] text-4xl lg:text-5xl text-[#1F1F22] leading-[1.02]">

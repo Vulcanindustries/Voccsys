@@ -27,7 +27,7 @@ const STEPS = [
 export default function HowItWorks() {
   return (
     <section id="process" data-testid="process-section" className="relative bg-[#F2F1ED] text-[#3D3F3E]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 lg:py-20">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-10 lg:py-14">
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-16">
           <div className="lg:col-span-6">
             <div className="overline mb-4">02 / How it works</div>

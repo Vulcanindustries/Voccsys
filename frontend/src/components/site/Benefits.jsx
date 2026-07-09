@@ -45,7 +45,7 @@ const BENEFITS = [
 export default function Benefits() {
   return (
     <section id="benefits" data-testid="benefits-section" className="relative bg-[#F2F1ED] text-[#1F1F22]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 lg:py-20">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-10 lg:py-14">
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-14">
           <div className="lg:col-span-6">
             <div className="overline mb-4">03 / ROI &amp; Benefits</div>

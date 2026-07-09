@@ -64,7 +64,7 @@ export default function ROICalculator() {
 
   return (
     <section id="calculator" data-testid="roi-calculator-section" className="relative bg-[#F2F1ED] text-[#3D3F3E]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 lg:py-20">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-10 lg:py-14">
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-14">
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-4">
