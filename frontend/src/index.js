@@ -13,11 +13,19 @@ const queryClient = new QueryClient({
   },
 });
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+const rootElement = document.getElementById("root");
+const tree = (
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
+
+// react-snap prerenders into #root at build time; hydrate if pre-rendered content exists.
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrateRoot(rootElement, tree);
+} else {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(tree);
+}

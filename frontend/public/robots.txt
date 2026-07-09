@@ -18,4 +18,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://voccsys.vulcanindustriesindia.com/sitemap.xml
+Sitemap: https://voccsys.com/sitemap.xml

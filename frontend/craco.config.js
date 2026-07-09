@@ -98,6 +98,21 @@ let webpackConfig = {
         ],
       };
 
+      // Exclude node_modules from source-map-loader (avoids ENOENT for missing
+      // upstream source maps in transitive deps such as `cookie/dist/index.js`).
+      if (Array.isArray(webpackConfig.module?.rules)) {
+        for (const rule of webpackConfig.module.rules) {
+          if (Array.isArray(rule.oneOf)) continue;
+          if (
+            rule.enforce === "pre" &&
+            Array.isArray(rule.use) &&
+            rule.use.some((u) => (u.loader || u).toString().includes("source-map-loader"))
+          ) {
+            rule.exclude = /node_modules/;
+          }
+        }
+      }
+
       // Add health check plugin to webpack if enabled
       if (config.enableHealthCheck && healthPluginInstance) {
         webpackConfig.plugins.push(healthPluginInstance);
