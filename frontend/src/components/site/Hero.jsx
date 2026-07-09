@@ -11,9 +11,13 @@ export default function Hero() {
   return (
     <section id="top" data-testid="hero-section" className="relative overflow-hidden text-[#3D3F3E]">
       <div className="absolute inset-0 -z-10">
-        <img src={HERO_IMG} alt="Industrial power plant cooling tower — VOCCSYS keeps condensers clean while the plant runs" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-[#F2F1ED]/85" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F2F1ED]/40 via-transparent to-[#F2F1ED]" />
+        <img
+          src={HERO_IMG}
+          alt="Industrial power plant cooling tower — VOCCSYS keeps condensers clean while the plant runs"
+          className="w-full h-full object-cover object-[center_75%]"
+        />
+        <div className="absolute inset-0 bg-[#F2F1ED]/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F2F1ED]/25 via-transparent to-[#F2F1ED]" />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-24 pb-32 lg:pt-32 lg:pb-40">
