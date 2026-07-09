@@ -5,7 +5,7 @@ import Landing from "@/pages/Landing";
 
 function App() {
   return (
-    <div className="App min-h-screen bg-[#2B2B35] text-[#FAFAFA]" data-testid="app-root">
+    <div className="App min-h-screen bg-[#121216] text-[#FAFAFA]" data-testid="app-root">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -16,8 +16,8 @@ function App() {
         position="bottom-right"
         toastOptions={{
           style: {
-            background: "#33333E",
-            border: "1px solid #4A4A55",
+            background: "#1A1A1F",
+            border: "1px solid #2E2E38",
             color: "#FAFAFA",
             borderRadius: 2,
           },

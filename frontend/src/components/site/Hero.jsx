@@ -12,8 +12,8 @@ export default function Hero() {
     <section id="top" data-testid="hero-section" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <img src={HERO_IMG} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-[#2B2B35]/80" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2B2B35]/40 via-transparent to-[#2B2B35]" />
+        <div className="absolute inset-0 bg-[#121216]/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#121216]/40 via-transparent to-[#121216]" />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-24 pb-32 lg:pt-32 lg:pb-40">
@@ -81,7 +81,7 @@ export default function Hero() {
                 { k: "1–3%", u: "", l: "Heat rate recovery" },
                 { k: "<12", u: "mo", l: "Typical payback" },
               ].map((s, i) => (
-                <div key={i} className="border-t border-[#4A4A55] pt-4" data-testid={`hero-stat-${i}`}>
+                <div key={i} className="border-t border-[#2E2E38] pt-4" data-testid={`hero-stat-${i}`}>
                   <div className="font-display font-black text-3xl lg:text-4xl text-white leading-none">
                     {s.k}
                     <span className="text-[#500000] text-xl align-top ml-1">{s.u}</span>
@@ -95,7 +95,7 @@ export default function Hero() {
           </div>
 
           <div className="lg:col-span-4 hidden lg:flex flex-col justify-end">
-            <div className="border border-[#4A4A55] bg-[#33333E]/70 backdrop-blur p-6">
+            <div className="border border-[#2E2E38] bg-[#1A1A1F]/70 backdrop-blur p-6">
               <div className="overline mb-3">System Snapshot</div>
               <ul className="tick-list space-y-3 text-sm text-[#E5E5EA]">
                 <li>Continuous sponge-ball loop through condenser tubes</li>

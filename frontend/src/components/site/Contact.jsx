@@ -94,7 +94,7 @@ export default function Contact() {
           onSubmit={submit}
           noValidate
           data-testid="contact-form"
-          className="lg:col-span-7 border border-[#4A4A55] bg-[#33333E] p-6 lg:p-10"
+          className="lg:col-span-7 border border-[#2E2E38] bg-[#1A1A1F] p-6 lg:p-10"
         >
           <div className="grid sm:grid-cols-2 gap-5">
             <Field label="Full name" required>
@@ -207,7 +207,7 @@ function Field({ label, required, className = "", children }) {
 function ContactLine({ icon: Icon, label, value, href, testid }) {
   const inner = (
     <div className="flex items-start gap-4 group">
-      <div className="w-10 h-10 border border-[#4A4A55] flex items-center justify-center shrink-0">
+      <div className="w-10 h-10 border border-[#2E2E38] flex items-center justify-center shrink-0">
         <Icon size={16} strokeWidth={1.5} className="text-[#500000]" />
       </div>
       <div>

@@ -62,7 +62,7 @@ export default function Benefits() {
         </div>
 
         {/* Metric grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 border border-[#4A4A55]">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 border border-[#2E2E38]">
           {METRICS.map((m, i) => (
             <motion.div
               key={i}
@@ -71,7 +71,7 @@ export default function Benefits() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
               data-testid={`metric-${i}`}
-              className={`p-8 bg-[#33333E] border-[#4A4A55] ${i % 2 === 0 ? "sm:border-r" : ""} lg:border-r ${i === 3 ? "lg:border-r-0" : ""} border-b sm:border-b ${i >= 2 ? "sm:border-b-0" : ""} lg:border-b-0`}
+              className={`p-8 bg-[#1A1A1F] border-[#2E2E38] ${i % 2 === 0 ? "sm:border-r" : ""} lg:border-r ${i === 3 ? "lg:border-r-0" : ""} border-b sm:border-b ${i >= 2 ? "sm:border-b-0" : ""} lg:border-b-0`}
             >
               <div className="font-display font-black text-5xl lg:text-6xl text-white leading-none tracking-[-0.04em]">
                 {m.n}
@@ -98,7 +98,7 @@ export default function Benefits() {
                 data-testid={`benefit-${i}`}
                 className="v-card p-7"
               >
-                <div className="w-11 h-11 border border-[#4A4A55] flex items-center justify-center">
+                <div className="w-11 h-11 border border-[#2E2E38] flex items-center justify-center">
                   <Icon size={20} strokeWidth={1.5} className="text-[#500000]" />
                 </div>
                 <h3 className="mt-6 font-display font-bold text-xl text-white">{b.t}</h3>

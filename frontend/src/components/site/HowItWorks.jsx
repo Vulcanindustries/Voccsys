@@ -45,12 +45,12 @@ export default function HowItWorks() {
         </div>
 
         {/* Diagram */}
-        <div className="border border-[#4A4A55] bg-[#33333E] p-6 lg:p-10 mb-16">
+        <div className="border border-[#2E2E38] bg-[#1A1A1F] p-6 lg:p-10 mb-16">
           <SpongeBallDiagram />
         </div>
 
         {/* Steps */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-[#4A4A55]">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-[#2E2E38]">
           {STEPS.map((s, i) => (
             <motion.div
               key={s.n}
@@ -59,7 +59,7 @@ export default function HowItWorks() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: i * 0.06 }}
               data-testid={`process-step-${i}`}
-              className={`p-8 bg-[#33333E] ${i < STEPS.length - 1 ? "lg:border-r border-[#4A4A55]" : ""} ${i < 2 ? "md:border-b lg:border-b-0 border-[#4A4A55]" : ""} ${i === 0 ? "md:border-r" : ""} ${i === 2 ? "md:border-r lg:border-r" : ""}`}
+              className={`p-8 bg-[#1A1A1F] ${i < STEPS.length - 1 ? "lg:border-r border-[#2E2E38]" : ""} ${i < 2 ? "md:border-b lg:border-b-0 border-[#2E2E38]" : ""} ${i === 0 ? "md:border-r" : ""} ${i === 2 ? "md:border-r lg:border-r" : ""}`}
             >
               <div className="flex items-baseline gap-3">
                 <span className="font-mono text-[#500000] text-sm">{s.n}</span>
@@ -100,12 +100,12 @@ function SpongeBallDiagram() {
       >
         <defs>
           <linearGradient id="tubeGrad" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#3B3B47" />
+            <stop offset="0%" stopColor="#22222A" />
             <stop offset="100%" stopColor="#101013" />
           </linearGradient>
           <linearGradient id="pipeGrad" x1="0" x2="1" y1="0" y2="0">
             <stop offset="0%" stopColor="#2A2A2E" />
-            <stop offset="100%" stopColor="#3B3B47" />
+            <stop offset="100%" stopColor="#22222A" />
           </linearGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="2" result="b" />
@@ -117,13 +117,13 @@ function SpongeBallDiagram() {
         </defs>
 
         {/* Left header (inlet) */}
-        <rect x="60" y="60" width="24" height="240" fill="url(#pipeGrad)" stroke="#5A5A65" />
+        <rect x="60" y="60" width="24" height="240" fill="url(#pipeGrad)" stroke="#3E3E48" />
         <text x="72" y="45" fill="#A0A0AC" fontSize="11" textAnchor="middle" fontFamily="IBM Plex Mono">
           INLET
         </text>
 
         {/* Right header (outlet) */}
-        <rect x={width - 84} y="60" width="24" height="240" fill="url(#pipeGrad)" stroke="#5A5A65" />
+        <rect x={width - 84} y="60" width="24" height="240" fill="url(#pipeGrad)" stroke="#3E3E48" />
         <text x={width - 72} y="45" fill="#A0A0AC" fontSize="11" textAnchor="middle" fontFamily="IBM Plex Mono">
           OUTLET
         </text>
@@ -135,7 +135,7 @@ function SpongeBallDiagram() {
           width={width - 100}
           height="250"
           fill="none"
-          stroke="#4A4A55"
+          stroke="#2E2E38"
           strokeDasharray="4 6"
         />
         <text x="60" y="325" fill="#8A8A96" fontSize="11" fontFamily="IBM Plex Mono">
@@ -147,7 +147,7 @@ function SpongeBallDiagram() {
           const y = 80 + i * 36;
           return (
             <g key={i}>
-              <rect x="84" y={y - 6} width={width - 168} height="12" fill="url(#tubeGrad)" stroke="#4A4A55" />
+              <rect x="84" y={y - 6} width={width - 168} height="12" fill="url(#tubeGrad)" stroke="#2E2E38" />
               <line
                 x1="84"
                 x2={width - 84}
@@ -167,7 +167,7 @@ function SpongeBallDiagram() {
               L 80 340
               C -20 340, -20 180, 80 180`}
           fill="none"
-          stroke="#5A5A65"
+          stroke="#3E3E48"
           strokeWidth="10"
           strokeLinecap="round"
           opacity="0.35"
@@ -185,13 +185,13 @@ function SpongeBallDiagram() {
 
         {/* Collector / Pump icons */}
         <g>
-          <circle cx={width - 40} cy="340" r="14" fill="#33333E" stroke="#500000" />
+          <circle cx={width - 40} cy="340" r="14" fill="#1A1A1F" stroke="#500000" />
           <text x={width - 40} y="366" fontSize="10" fill="#A0A0AC" textAnchor="middle" fontFamily="IBM Plex Mono">
             COLLECTOR
           </text>
         </g>
         <g>
-          <rect x="30" y="326" width="28" height="28" fill="#33333E" stroke="#500000" />
+          <rect x="30" y="326" width="28" height="28" fill="#1A1A1F" stroke="#500000" />
           <text x="44" y="374" fontSize="10" fill="#A0A0AC" textAnchor="middle" fontFamily="IBM Plex Mono">
             PUMP
           </text>

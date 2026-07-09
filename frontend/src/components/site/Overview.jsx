@@ -38,7 +38,7 @@ export default function Overview() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 data-testid={`overview-pillar-${i}`}
-                className="border border-[#4A4A55] p-6 bg-[#33333E]"
+                className="border border-[#2E2E38] p-6 bg-[#1A1A1F]"
               >
                 <div className="font-display font-bold text-xl text-white">{f.t}</div>
                 <div className="dashed-divider my-3" />

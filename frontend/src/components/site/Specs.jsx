@@ -41,7 +41,7 @@ const SPEC_GROUPS = [
 
 export default function Specs() {
   return (
-    <section id="specs" data-testid="specs-section" className="relative bg-[#2B2B35]">
+    <section id="specs" data-testid="specs-section" className="relative bg-[#121216]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-14">
           <div className="lg:col-span-6">
@@ -58,19 +58,19 @@ export default function Specs() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-0 border border-[#4A4A55]">
+        <div className="grid md:grid-cols-2 gap-0 border border-[#2E2E38]">
           {SPEC_GROUPS.map((g, gi) => (
             <div
               key={g.title}
               data-testid={`spec-group-${gi}`}
-              className={`bg-[#33333E] p-8 ${gi % 2 === 0 ? "md:border-r" : ""} ${gi < 2 ? "border-b" : ""} border-[#4A4A55]`}
+              className={`bg-[#1A1A1F] p-8 ${gi % 2 === 0 ? "md:border-r" : ""} ${gi < 2 ? "border-b" : ""} border-[#2E2E38]`}
             >
               <div className="flex items-center gap-3">
                 <span className="w-2 h-2 bg-[#500000]" />
                 <div className="overline">{g.title}</div>
               </div>
 
-              <dl className="mt-6 divide-y divide-[#40404B]">
+              <dl className="mt-6 divide-y divide-[#26262F]">
                 {g.rows.map(([k, v]) => (
                   <div key={k} className="py-3 grid grid-cols-5 gap-4">
                     <dt className="col-span-2 text-sm text-[#A0A0AC]">{k}</dt>

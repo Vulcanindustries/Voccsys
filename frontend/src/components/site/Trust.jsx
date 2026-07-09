@@ -34,7 +34,7 @@ export default function Trust() {
   const doubled = [...CLIENTS, ...CLIENTS];
 
   return (
-    <section id="trust" data-testid="trust-section" className="relative bg-[#2B2B35]">
+    <section id="trust" data-testid="trust-section" className="relative bg-[#121216]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
         <div className="flex items-center gap-3 mb-6">
           <span className="w-8 h-[1px] bg-[#500000]" />
@@ -46,7 +46,7 @@ export default function Trust() {
         </h2>
 
         {/* Marquee logos */}
-        <div className="mt-12 border-y border-[#4A4A55] py-6 overflow-hidden">
+        <div className="mt-12 border-y border-[#2E2E38] py-6 overflow-hidden">
           <div className="marquee gap-16 whitespace-nowrap">
             {doubled.map((c, i) => {
               const Icon = c.icon;
@@ -72,7 +72,7 @@ export default function Trust() {
             <div
               key={i}
               data-testid={`testimonial-${i}`}
-              className="border border-[#4A4A55] bg-[#33333E] p-7 flex flex-col"
+              className="border border-[#2E2E38] bg-[#1A1A1F] p-7 flex flex-col"
             >
               <div className="text-[#500000] font-display font-black text-4xl leading-none">&ldquo;</div>
               <p className="mt-4 text-[#E5E5EA] text-sm leading-relaxed flex-1">{t.q}</p>

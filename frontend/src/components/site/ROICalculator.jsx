@@ -63,7 +63,7 @@ export default function ROICalculator() {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="calculator" data-testid="roi-calculator-section" className="relative bg-[#2B2B35]">
+    <section id="calculator" data-testid="roi-calculator-section" className="relative bg-[#121216]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
         <div className="grid lg:grid-cols-12 gap-6 items-end mb-14">
           <div className="lg:col-span-6">
@@ -84,11 +84,11 @@ export default function ROICalculator() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-0 border border-[#4A4A55]">
+        <div className="grid lg:grid-cols-12 gap-0 border border-[#2E2E38]">
           {/* Inputs */}
           <div
             data-testid="roi-inputs"
-            className="lg:col-span-6 bg-[#33333E] p-8 lg:p-10 lg:border-r border-b lg:border-b-0 border-[#4A4A55]"
+            className="lg:col-span-6 bg-[#1A1A1F] p-8 lg:p-10 lg:border-r border-b lg:border-b-0 border-[#2E2E38]"
           >
             <div className="overline mb-6">Your plant</div>
 
@@ -147,7 +147,7 @@ export default function ROICalculator() {
           {/* Results */}
           <div
             data-testid="roi-results"
-            className="lg:col-span-6 bg-[#33333E] p-8 lg:p-10 relative overflow-hidden"
+            className="lg:col-span-6 bg-[#1A1A1F] p-8 lg:p-10 relative overflow-hidden"
           >
             <div className="overline mb-6">Indicative outcome</div>
 
@@ -253,7 +253,7 @@ function SliderField({ label, unit, value, min, max, step, onChange, testid, for
 
 function ResultTile({ label, value, sub, testid }) {
   return (
-    <div className="border border-[#4A4A55] bg-[#33333E] p-5" data-testid={testid}>
+    <div className="border border-[#2E2E38] bg-[#1A1A1F] p-5" data-testid={testid}>
       <div className="overline">{label}</div>
       <div className="mt-2 font-display font-bold text-white text-lg lg:text-xl tracking-tight break-all">
         {value}

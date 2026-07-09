@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer data-testid="site-footer" className="border-t border-[#4A4A55] bg-[#2B2B35]">
+    <footer data-testid="site-footer" className="border-t border-[#2E2E38] bg-[#121216]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
