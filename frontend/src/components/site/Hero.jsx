@@ -30,7 +30,7 @@ export default function Hero() {
               className="mb-8"
             >
               <span className="overline text-[#B45309]">
-                Patented · Online Cleaning · Zero Shutdown
+                Patent Pending · Online Cleaning · Zero Shutdown
               </span>
             </motion.div>
 
@@ -76,22 +76,6 @@ export default function Hero() {
               >
                 <PlayCircle size={18} /> See the Process
               </button>
-              <a
-                href="/voccsys-brochure.pdf"
-                download
-                data-testid="hero-cta-brochure"
-                className="v-btn-secondary"
-              >
-                <Download size={18} /> Download Brochure
-              </a>
-              <a
-                href="/voccsys-onepager.pdf"
-                download
-                data-testid="hero-cta-onepager"
-                className="text-sm text-[#6B6E6C] hover:text-[#B45309] transition-colors underline underline-offset-4 decoration-[#D9D6CE] hover:decoration-[#B45309]"
-              >
-                or grab the 2-page one-pager →
-              </a>
             </motion.div>
 
             <div className="mt-14 grid grid-cols-3 gap-6 max-w-2xl">

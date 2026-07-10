@@ -266,7 +266,7 @@ def draw_cover_frame(canv, doc):
     canv.saveState()
     canv.translate(w - 12 * mm, 30 * mm)
     canv.rotate(90)
-    canv.drawString(0, 0, "PATENTED · ONLINE CONDENSER CLEANING · ZERO SHUTDOWN")
+    canv.drawString(0, 0, "PATENT PENDING · ONLINE CONDENSER CLEANING · ZERO SHUTDOWN")
     canv.restoreState()
 
     # Footer strip
@@ -291,7 +291,7 @@ def build_cover(st):
     story.append(Paragraph("while the plant runs.", st["h1_accent"]))
     story.append(Spacer(1, 8 * mm))
     story.append(Paragraph(
-        "VOCCSYS is Vulcan Industries&#8217; patented Online Condenser Cleaning "
+        "VOCCSYS is Vulcan Industries&#8217; patent-pending Online Condenser Cleaning "
         "System &#8212; a continuous sponge-ball circulation loop that scrubs scale "
         "and biofilm from every condenser tube while the plant remains in "
         "operation. Zero shutdown. Zero chemicals. Measurable heat rate recovery.",
@@ -672,7 +672,7 @@ def build_onepager_page1(st):
     s.append(Paragraph("<font color='#B45309'>while the plant runs.</font>", st["h2"]))
     s.append(Spacer(1, 3 * mm))
     s.append(Paragraph(
-        "VOCCSYS is Vulcan Industries&#8217; patented online condenser cleaning "
+        "VOCCSYS is Vulcan Industries&#8217; patent-pending online condenser cleaning "
         "system. A continuous sponge-ball circulation loop scrubs scale and "
         "biofilm from every tube while the plant remains in operation.",
         st["body_small"],
