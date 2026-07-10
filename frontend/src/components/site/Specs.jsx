@@ -4,7 +4,7 @@ const SPEC_GROUPS = [
   {
     title: "Configuration",
     rows: [
-      ["Model range", "VCS-500 / VCS-1000 / VCS-2000 / Custom"],
+      ["Model range", "VOCCSYS-Series / Custom"],
       ["Ball injection type", "Continuous / batch programmable"],
       ["Tube ID compatibility", "18 mm – 32 mm"],
       ["Tube materials", "SS 304 / 316L, Titanium, Cu-Ni, Admiralty Brass"],
@@ -23,7 +23,7 @@ const SPEC_GROUPS = [
     title: "System",
     rows: [
       ["Control", "PLC + HMI, remote SCADA-ready"],
-      ["Ball recovery", "100% via mesh strainer / basket type"],
+      ["Ball recovery", "100% via mesh Ball Trap / basket type"],
       ["Piping", "MS / SS with rubber lining, ANSI B16.5 flanges"],
       ["Power supply", "415 V, 3φ, 50 Hz (customisable)"],
     ],

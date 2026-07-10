@@ -124,7 +124,7 @@ export default function ROICalculator() {
               format={(v) => v.toLocaleString("en-IN")}
             />
             <SliderField
-              label="Heat rate loss from fouling"
+              label="Heat transfer rate loss from fouling"
               unit="%"
               value={loss}
               min={0.5}

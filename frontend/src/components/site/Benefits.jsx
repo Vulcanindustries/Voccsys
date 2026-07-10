@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { TrendingDown, Gauge, Timer, Leaf, Wrench, ShieldCheck } from "lucide-react";
 
 const METRICS = [
-  { n: "1–3%", label: "Heat rate improvement", sub: "Continuous, measurable at the turbine." },
-  { n: "6–12", suffix: "mo", label: "Typical payback period", sub: "Across most large condensers." },
+  { n: "1–3%", label: "Heat transfer rate improvement", sub: "Continuous, measurable at the turbine." },
+  { n: "6–15", suffix: "mo", label: "Typical payback period", sub: "Across most large condensers." },
   { n: "40–60%", label: "Reduction in fouling losses", sub: "Vs. offline mechanical cleaning cycles." },
   { n: "24/7", label: "Uninterrupted operation", sub: "Zero shutdown, zero production loss." },
 ];
@@ -17,7 +17,7 @@ const BENEFITS = [
   },
   {
     icon: Gauge,
-    t: "Stable heat rate",
+    t: "Stable heat transfer rate",
     d: "No more sawtooth degradation between shutdowns. Performance stays flat at design conditions.",
   },
   {
@@ -56,7 +56,7 @@ export default function Benefits() {
           <div className="lg:col-span-6">
             <p className="text-[#6B6E6C] max-w-xl">
               The value of VOCCSYS is neither theoretical nor marginal — it is measurable at the
-              main condenser vacuum, at the turbine heat rate, and on your fuel invoice.
+              main condenser vacuum, at the turbine heat transfer rate, and on your fuel invoice.
             </p>
           </div>
         </div>

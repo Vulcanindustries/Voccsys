@@ -51,9 +51,9 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="mt-8 text-lg lg:text-xl text-[#3D3F3E] max-w-2xl leading-relaxed"
             >
-              VOCCSYS is Vulcan Industries&apos; online condenser tube cleaning system — an
+              VOCCSYS<sup className="text-[10px] align-super">®</sup> is Vulcan Industries&apos; online condenser tube cleaning system — an
               engineered ball-circulation loop that scrubs scale &amp; biofilm continuously,
-              restoring heat rate without a single minute of downtime.
+              restoring heat transfer rate without a single minute of downtime.
             </motion.p>
 
             <motion.div
@@ -81,8 +81,8 @@ export default function Hero() {
             <div className="mt-14 grid grid-cols-3 gap-6 max-w-2xl">
               {[
                 { k: "0", u: "hrs", l: "Shutdown required" },
-                { k: "1–3%", u: "", l: "Heat rate recovery" },
-                { k: "<12", u: "mo", l: "Typical payback" },
+                { k: "1–3%", u: "", l: "Heat transfer rate recovery" },
+                { k: "<15", u: "mo", l: "Typical payback" },
               ].map((s, i) => (
                 <div key={i} className="border-t border-[#D9D6CE] pt-4" data-testid={`hero-stat-${i}`}>
                   <div className="font-display font-black text-3xl lg:text-4xl text-[#1F1F22] leading-none">
@@ -102,14 +102,14 @@ export default function Hero() {
               <div className="overline mb-3">System Snapshot</div>
               <ul className="tick-list space-y-3 text-sm text-[#3D3F3E]">
                 <li>Continuous sponge-ball loop through condenser tubes</li>
-                <li>Ball collector + strainer with auto-reinjection</li>
-                <li>PLC control + real-time differential pressure monitoring</li>
+                <li>Ball collector + Ball Trap with auto-reinjection</li>
+                <li>PLC control + Real-time monitoring</li>
                 <li>Compatible with 18 – 32 mm tube ID configurations</li>
               </ul>
               <div className="dashed-divider my-5" />
               <div className="flex items-center justify-between text-xs text-[#6B6E6C]">
                 <span>Model</span>
-                <span className="font-mono text-[#1F1F22]">VCS-Series 500 / 1000 / 2000</span>
+                <span className="font-mono text-[#1F1F22]">VOCCSYS-Series</span>
               </div>
             </div>
           </div>

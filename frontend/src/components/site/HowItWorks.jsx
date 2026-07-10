@@ -15,7 +15,7 @@ const STEPS = [
   {
     n: "03",
     t: "Collect",
-    d: "A downstream strainer captures 100% of the balls after the condenser without disturbing water flow.",
+    d: "A downstream Ball Trap captures 100% of the balls after the condenser without disturbing water flow.",
   },
   {
     n: "04",
