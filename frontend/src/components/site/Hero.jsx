@@ -1,13 +1,28 @@
-import React from "react";
-import { ArrowRight, PlayCircle, Download } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { ArrowRight, PlayCircle, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HERO_IMG =
   "https://images.unsplash.com/photo-1700607101915-99650c815caf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxwb3dlciUyMHBsYW50JTIwY29vbGluZyUyMHRvd2VyJTIwaW5kdXN0cmlhbHxlbnwwfHx8fDE3ODM1NDYwMjJ8MA&ixlib=rb-4.1.0&q=85";
 
+const VIDEO_ID = "R1Gl3M4zDVg";
+
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
 export default function Hero() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  useEffect(() => {
+    if (!videoOpen) return;
+    const onKey = (e) => e.key === "Escape" && setVideoOpen(false);
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [videoOpen]);
+
   return (
     <section id="top" data-testid="hero-section" className="relative overflow-hidden text-[#3D3F3E]">
       <div className="absolute inset-0 -z-10">
@@ -51,7 +66,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="mt-8 text-lg lg:text-xl text-[#3D3F3E] max-w-2xl leading-relaxed"
             >
-              VOCCSYS<sup className="text-[10px] align-super">®</sup> is Vulcan Industries&apos; online condenser tube cleaning system — an
+              VOCCSYS<sup className="text-lg align-super font-normal text-[#B45309]">®</sup> is Vulcan Industries&apos; online condenser tube cleaning system — an
               engineered ball-circulation loop that scrubs scale &amp; biofilm continuously,
               restoring heat transfer rate without a single minute of downtime.
             </motion.p>
@@ -70,7 +85,7 @@ export default function Hero() {
                 Request On-Site Demo <ArrowRight size={18} />
               </button>
               <button
-                onClick={() => scrollTo("process")}
+                onClick={() => setVideoOpen(true)}
                 data-testid="hero-cta-process"
                 className="v-btn-secondary"
               >
@@ -117,6 +132,49 @@ export default function Hero() {
       </div>
 
       <div className="rule" />
+
+      {/* ============ Video modal ============ */}
+      <AnimatePresence>
+        {videoOpen && (
+          <motion.div
+            key="video-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setVideoOpen(false)}
+            data-testid="video-modal"
+            className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25, ease: [0.34, 1.4, 0.64, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-5xl"
+            >
+              <button
+                onClick={() => setVideoOpen(false)}
+                data-testid="video-close"
+                aria-label="Close video"
+                className="absolute -top-12 right-0 text-white hover:text-[#B45309] transition-colors flex items-center gap-2 text-sm font-mono uppercase tracking-widest"
+              >
+                Close <X size={18} />
+              </button>
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
+                  title="VOCCSYS — See the Process"
+                  className="absolute inset-0 w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
