@@ -82,7 +82,7 @@ export default function Hero() {
                 data-testid="hero-cta-demo"
                 className="v-btn-primary"
               >
-                Request On-Site Demo <ArrowRight size={18} />
+                Request Quote <ArrowRight size={18} />
               </button>
               <button
                 onClick={() => setVideoOpen(true)}

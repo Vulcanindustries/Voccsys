@@ -46,7 +46,7 @@ export default function Header() {
           </span>
         </button>
 
-        <nav className="hidden lg:flex items-center gap-8" aria-label="Primary">
+        <nav className="hidden lg:flex items-center gap-8 ml-auto" aria-label="Primary">
           {NAV.map((n) => (
             <button
               key={n.id}
@@ -59,19 +59,9 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
-          <button
-            data-testid="header-cta-demo"
-            onClick={() => go("contact")}
-            className="v-btn-primary text-sm"
-          >
-            Request Demo
-          </button>
-        </div>
-
         <button
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden text-[#1F1F22] p-2 border border-[#D9D6CE]"
+          className="lg:hidden text-[#1F1F22] p-2 border border-[#D9D6CE] ml-auto"
           data-testid="mobile-menu-toggle"
           aria-label="Toggle menu"
         >
@@ -97,7 +87,7 @@ export default function Header() {
               data-testid="mobile-cta-demo"
               className="v-btn-primary mt-4 justify-center"
             >
-              Request Demo
+              Request Quote
             </button>
           </div>
         </div>
