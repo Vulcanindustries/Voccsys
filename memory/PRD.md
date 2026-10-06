@@ -58,3 +58,6 @@ Build a landing page for VOCCSYS (Vulcan Online Condenser Cleaning System) — a
 - **Fix**: admin dashboard mobile (375px) horizontal overflow — header now wraps.
 - Regression: 13/13 backend pytest pass.
 - Deferred by user: real case study data (keeping illustrative example until user sends verified numbers).
+
+## Update (2026-07-06, final) — Questionnaire link
+- Footer Explore column now includes "Questionnaire" (data-testid=footer-questionnaire-link) -> https://forms.gle/h3nt7HpikzScrfHy6, opens in new tab. Verified: click resolves to the live Google Form.

@@ -36,6 +36,17 @@ export default function Footer() {
                   FAQ
                 </Link>
               </li>
+              <li>
+                <a
+                  href="https://forms.gle/h3nt7HpikzScrfHy6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="footer-questionnaire-link"
+                  className="hover:text-[#B45309] transition-colors"
+                >
+                  Questionnaire
+                </a>
+              </li>
             </ul>
           </div>
 
