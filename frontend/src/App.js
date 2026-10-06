@@ -5,6 +5,8 @@ import { Toaster } from "sonner";
 import Landing from "@/pages/Landing";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import FAQ from "@/pages/FAQ";
+import AdminLogin from "@/pages/AdminLogin";
+import AdminDashboard from "@/pages/AdminDashboard";
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
@@ -32,6 +34,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
       <Toaster
