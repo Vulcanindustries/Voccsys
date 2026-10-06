@@ -2,14 +2,12 @@ import React from "react";
 import { Hexagon, Triangle, Square, Circle, Diamond, Pentagon } from "lucide-react";
 
 const CLIENTS = [
-  { icon: Hexagon, name: "APEX POWERGEN" },
-  { icon: Triangle, name: "MERIDIAN STEEL" },
-  { icon: Square, name: "NORTHWIND HVAC" },
-  { icon: Circle, name: "KAVERI SUGARS" },
-  { icon: Diamond, name: "CIRRUS REFINERIES" },
-  { icon: Pentagon, name: "ATLAS PETROCHEM" },
-  { icon: Hexagon, name: "SAPPHIRE ENERGY" },
-  { icon: Triangle, name: "ORION CHEMICALS" },
+  { icon: Hexagon,  name: "GUJARAT AMBUJA EXPORTS LTD" },
+  { icon: Triangle, name: "QESM POWER PLANT" },
+  { icon: Square,   name: "JAIRAJ ISPAT" },
+  { icon: Circle,   name: "CIRON DRUGS & PHARMACEUTICALS" },
+  { icon: Diamond,  name: "OPTIMISTIC ORGANIC SDN.BHD" },
+  { icon: Pentagon, name: "BUNGE INDIA PVT. LTD" },
 ];
 
 const TESTIMONIALS = [
