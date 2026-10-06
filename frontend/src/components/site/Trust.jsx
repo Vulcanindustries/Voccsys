@@ -23,8 +23,8 @@ const TESTIMONIALS = [
   },
   {
     q: "Our chiller COP recovery translated directly to lower auxiliary consumption across the campus.",
-    who: "Chief Engineer",
-    org: "District Cooling Operator",
+    who: "HVAC Engineer",
+    org: "Pharmaceutical Plant",
   },
 ];
 
