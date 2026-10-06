@@ -39,3 +39,8 @@ Build a landing page for VOCCSYS (Vulcan Online Condenser Cleaning System) — a
 - **P2**: SEO metadata (title, OG tags, sitemap)
 - **P3**: Multi-language (Hindi) toggle for regional B2B outreach
 - **P3**: PDF brochure download CTA
+
+## Update (2026-07-06) — Hash anchor navigation fix
+- Added `ScrollToHash` component in `App.js`: watches route changes, smooth-scrolls to element matching URL hash (e.g. `#contact`), scrolls to top otherwise. Fixes React Router not auto-scrolling on cross-page anchor links.
+- Added `scroll-mt-20` to Contact section so it clears the sticky header on anchor scroll.
+- FAQ page links "Reach out to our team." and "Ask our team →" now land on home page scrolled to the Contact section (verified: click tests + direct `/#contact` load, contact_top ≈ 80px).
