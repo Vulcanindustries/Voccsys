@@ -56,7 +56,7 @@ export default function Benefits() {
           <div className="lg:col-span-6">
             <p className="text-[#6B6E6C] max-w-xl">
               The value of VOCCSYS is neither theoretical nor marginal — it is measurable at the
-              main condenser vacuum, at the turbine heat transfer rate, and on your fuel invoice.
+              main condenser vacuum, at the condenser heat transfer rate, chiller power consumption, and on your fuel invoice.
             </p>
           </div>
         </div>
