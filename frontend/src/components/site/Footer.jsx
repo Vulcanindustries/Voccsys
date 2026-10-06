@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -42,6 +43,15 @@ export default function Footer() {
                 </a>
               </li>
               <li>Vulcan Industries India</li>
+              <li>
+                <Link
+                  to="/privacy"
+                  data-testid="footer-privacy-link"
+                  className="hover:text-[#B45309] transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -51,6 +61,13 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs text-[#8A8A80]">
           <div className="font-mono">© {year} Vulcan Industries India · All rights reserved.</div>
           <div className="flex items-center gap-6 font-mono">
+            <Link
+              to="/privacy"
+              data-testid="footer-privacy-link-bottom"
+              className="hover:text-[#B45309] transition-colors"
+            >
+              Privacy Policy
+            </Link>
             <span>VOCCSYS™</span>
             <span>Made in India</span>
           </div>
