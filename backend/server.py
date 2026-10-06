@@ -293,10 +293,21 @@ async def get_status_checks():
 
 
 # ---------- Auth routes ----------
+def _client_ip(request: Request) -> str:
+    """Real client IP behind the K8s ingress: X-Forwarded-For first hop."""
+    fwd = request.headers.get("x-forwarded-for")
+    if fwd:
+        return fwd.split(",")[0].strip()
+    real = request.headers.get("x-real-ip")
+    if real:
+        return real.strip()
+    return request.client.host if request.client else "unknown"
+
+
 @api_router.post("/auth/login")
 async def login(payload: LoginRequest, request: Request):
     email = payload.email.lower()
-    ip = request.client.host if request.client else "unknown"
+    ip = _client_ip(request)
     identifier = f"{ip}:{email}"
 
     attempt = await db.login_attempts.find_one({"identifier": identifier})

@@ -1,0 +1,54 @@
+{
+  "summary": "Tested VOCCSYS iteration 3 features: email alerts on inquiry POST (verified 202 Accepted in backend logs), JWT-protected admin dashboard (/admin/login + /admin), inquiry CRUD with Bearer auth, Case Study section, YouTube hero embed, and FAQ regression. Backend: 12/13 pytest pass. Frontend: All critical flows pass. 1 security bug found (lockout counter split by proxy IP). 1 informational issue (YouTube video unavailable - owner embed setting).",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "POST /api/auth/login (lockout)",
+        "issue": "Brute-force lockout uses request.client.host (direct TCP peer), but behind the K8s ingress multiple proxy IPs rotate (observed 10.208.133.66 and 10.208.133.69 in db.login_attempts within the same test). Each IP maintains an independent counter so the 5-attempt lockout rule never aggregates across real public clients. Lockout is effectively bypassable. Fix: parse X-Forwarded-For / X-Real-IP (first hop) when computing the identifier, OR key the lockout on email only.",
+        "priority": "HIGH"
+      }
+    ],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_voccsys_api.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Fix lockout identifier so it survives multi-pod ingress (use X-Forwarded-For first hop, or key by email only). Current implementation does NOT prevent brute force from a real browser-based attacker.",
+    "YouTube video u0iLiX1AXN8 shows 'Video unavailable - This content isn't available' in the hero modal. This is a YouTube owner-side embed/privacy setting on that video, not a code bug. User needs to re-upload or enable 'Allow embedding' on the YouTube video. (Informational.)"
+  ],
+  "critical_code_review_comments": [
+    "server.py line 299-300: `ip = request.client.host` behind an ingress returns proxy pod IP, defeating the per-ip:email lockout. Must honor X-Forwarded-For.",
+    "server.py line 345-347: email send failure is swallowed with logger.exception but inquiry POST still returns 201. Good UX, but ensure monitoring alerts on repeated email_failed events; no retry queue exists."
+  ],
+  "verified_working": [
+    "POST /api/auth/login returns access_token (200), wrong password returns 401, GET /api/auth/me requires Bearer (401 without), returns admin user with token.",
+    "GET/PATCH/DELETE /api/inquiries require Bearer (401 without), work correctly with Bearer.",
+    "POST /api/inquiries public, 201; backend log shows 'POST https://integrations.emergentagent.com/api/v1/email/send HTTP/1.1 202 Accepted' for each submission - owner email alert feature confirmed working end-to-end up to proxy acceptance.",
+    "/admin without token redirects to /admin/login. Login with admin@vulcanindustriesindia.com / Vocc64369d3def47!Sys lands on /admin dashboard showing inquiry cards. localStorage key 'vocc_admin_token' set as documented.",
+    "Filter tabs show counts (all·N, new·N, contacted·N, closed·N). Sign out returns to /admin/login; /admin inaccessible after logout.",
+    "Status PATCH flow new→contacted→closed→new all return 200 with updated status (via pytest). Delete returns 204 and GET confirms removal.",
+    "Case Study section present between Trust and ROI Calculator (order verified via scroll positions trust=5206, case-study=5838). All 4 data-testid='case-metric-0..3' rows render. 'Illustrative example' label present. Dark strip with '+4.1 MW recovered output' and '5.4 months' payback visible. Mobile 375px: no horizontal overflow (scrollWidth=375=clientWidth=375).",
+    "Contact form submission (testids input-name/company/email/phone/industry/message/submit-inquiry) shows success toast 'Request received. Our engineering team will contact you shortly.' and the inquiry appears at top of admin dashboard.",
+    "FAQ links 'Ask our team →' and 'Reach out to our team.' both href='/#contact'. Privacy page returns 200. Landing page loads with no console errors."
+  ],
+  "informational": [
+    "Hero 'See the Process' button opens video-modal with iframe src 'https://www.youtube.com/embed/u0iLiX1AXN8?autoplay=1&rel=0&modestbranding=1'. The YouTube player renders 'Video unavailable — This content isn't available.' - owner-side embed/privacy block on the video. Not a code defect; user must adjust YouTube settings on that upload."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_voccsys_api.py (new pytest suite covering auth + inquiries CRUD + lockout)"
+  ],
+  "success_rate": {"backend": "92% (12/13 pytest; lockout test exposes the security bug above)", "frontend": "100% (all required flows pass)"},
+  "test_credentials": "admin@vulcanindustriesindia.com / Vocc64369d3def47!Sys (from /app/memory/test_credentials.md). Confirmed working.",
+  "seed_data_creation": "Created 6 TEST_* inquiries during testing; all cleaned up afterward. Cleaned up 2 lockout-test login_attempts entries.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "If main agent fixes lockout to use X-Forwarded-For, re-run /app/backend/tests/test_voccsys_api.py (specifically TestLockout). Note that pytest-xdist is enabled (2 workers) in /app/backend/pytest.ini - acceptable for current suite. Admin seed is idempotent (hash updated when password changes). All other iteration-3 features are verified working.",
+  "rca of the issue": "Lockout bug RCA: /app/backend/server.py line 299 uses `request.client.host`. In this K8s deployment, requests arrive through an ingress that proxies via different cluster-internal pod IPs (observed 10.208.133.66 and 10.208.133.69 for sequential requests from one external client). The identifier `ip:email` therefore varies between consecutive attempts, and each counter stays below the 5-attempt threshold. Reproduction: POST /api/auth/login with fake creds 6+ times -> inspect db.login_attempts and you see multiple identifiers each with count<=5, no locked_until, and 6th login still returns 401 (not 429). Mitigation: compute client IP from X-Forwarded-For (take first entry) or from X-Real-IP header, or drop IP from the key and lock per-email only (with CAPTCHA added if DoS risk is a concern)."
+}
