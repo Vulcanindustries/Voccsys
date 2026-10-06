@@ -32,7 +32,7 @@ const SPEC_GROUPS = [
     title: "Compliance",
     rows: [
       ["Design code", "TEMA / HEI aligned"],
-      ["Instrumentation", "Delta P and Delta T"],
+      ["Instrumentation", "ΔP and ΔT"],
       ["Documentation", "GA drawings, PID, O&M manual"],
       ["Warranty", "12 months from commissioning"],
     ],
