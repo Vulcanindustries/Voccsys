@@ -78,7 +78,8 @@ export default function Contact() {
             <ContactLine
               icon={Phone}
               label="Phone"
-              value="+91 · Call our sales desk"
+              value="+91 · 75068 88626"
+              href="tel:+917506888626"
               testid="contact-phone"
             />
             <ContactLine

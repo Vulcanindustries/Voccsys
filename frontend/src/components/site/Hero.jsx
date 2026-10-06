@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const HERO_IMG =
   "https://images.unsplash.com/photo-1700607101915-99650c815caf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxwb3dlciUyMHBsYW50JTIwY29vbGluZyUyMHRvd2VyJTIwaW5kdXN0cmlhbHxlbnwwfHx8fDE3ODM1NDYwMjJ8MA&ixlib=rb-4.1.0&q=85";
 
-const VIDEO_ID = "R1Gl3M4zDVg";
+const VIDEO_ID = "u0iLiX1AXN8";
 
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -66,7 +66,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="mt-8 text-lg lg:text-xl text-[#3D3F3E] max-w-2xl leading-relaxed"
             >
-              VOCCSYS<sup className="text-lg align-super font-normal text-[#B45309]">®</sup> is Vulcan Industries&apos; online condenser tube cleaning system — an
+              VOCCSYS<sup className="text-[14px] align-super font-normal text-[#B45309]">®</sup> is Vulcan Industries&apos; online condenser tube cleaning system — an
               engineered ball-circulation loop that scrubs scale &amp; biofilm continuously,
               restoring heat transfer rate without a single minute of downtime.
             </motion.p>
