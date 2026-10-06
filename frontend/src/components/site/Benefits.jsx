@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { TrendingDown, Gauge, Timer, Leaf, Wrench, ShieldCheck } from "lucide-react";
 
 const METRICS = [
-  { n: "1–3%", label: "Heat transfer rate improvement", sub: "Continuous, measurable at the turbine." },
+  { n: "05–20%", label: "Heat transfer rate improvement", sub: "Continuous, measurable at the turbine." },
   { n: "6–15", suffix: "mo", label: "Typical payback period", sub: "Across most large condensers." },
   { n: "40–60%", label: "Reduction in fouling losses", sub: "Vs. offline mechanical cleaning cycles." },
   { n: "24/7", label: "Uninterrupted operation", sub: "Zero shutdown, zero production loss." },
