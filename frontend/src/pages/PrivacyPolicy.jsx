@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
+import useSeo from "@/hooks/useSeo";
 
 const EFFECTIVE_DATE = "9 December 2025";
 
@@ -129,8 +130,14 @@ const SECTIONS = [
 ];
 
 export default function PrivacyPolicy() {
+  useSeo({
+    title: "Privacy Policy — VOCCSYS by Vulcan Industries India",
+    description:
+      "How Vulcan Industries India collects, uses and protects information submitted on voccsys.com — contact form data, retention and your rights.",
+    path: "/privacy",
+  });
+
   useEffect(() => {
-    document.title = "Privacy Policy — VOCCSYS by Vulcan Industries India";
     window.scrollTo(0, 0);
   }, []);
 

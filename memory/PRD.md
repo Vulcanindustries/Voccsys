@@ -71,3 +71,12 @@ Build a landing page for VOCCSYS (Vulcan Online Condenser Cleaning System) — a
 - New standalone page /case-study (src/pages/CaseStudy.jsx): headline, illustrative-example card, before/after metrics table, net-effect strip, CTA "Request a proposal" -> /#contact.
 - Footer Explore column: "Case study" link added between Questionnaire and FAQ (data-testid=footer-casestudy-link).
 - Verified: page renders desktop+mobile (no overflow), footer link routes correctly, CTA lands on contact section, landing has no leftover section.
+
+## Update (2026-07-06) — Complete sitemap + SEO/GEO/AEO pass
+- sitemap.xml regenerated: 4 public pages (/, /case-study, /faq, /privacy), fresh lastmod 2026-07-06, invalid hash-fragment URLs removed. /admin intentionally excluded.
+- robots.txt: added Disallow /admin; AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) remain explicitly allowed; sitemap referenced.
+- react-snap now pre-renders all 4 public routes (was only "/"). Verified in production build: each route's static HTML has its own title, meta description, canonical, og:url.
+- New src/hooks/useSeo.js — per-page title/description/canonical/OG-Twitter updater, captured during pre-render.
+- AEO: FAQPage JSON-LD moved out of global index.html onto /faq, generated from faq.js (all 15 real Q&As). Case study page got Article JSON-LD. Home keeps Organization + Product.
+- GEO: llms.txt gained a Pages section listing all 4 URLs with summaries + case study numbers.
+- Verified: yarn build crawls 5/5 paths; sitemap XML well-formed; all JSON-LD parses; preview serves all routes 200. Note: pre-rendered SEO ships on Deploy (preview runs the dev server).

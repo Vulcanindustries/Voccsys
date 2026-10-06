@@ -3,6 +3,25 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowDownRight, FlaskConical } from "lucide-react";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
+import useSeo from "@/hooks/useSeo";
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Cleaner tubes. Measurable megawatts.",
+  description:
+    "Representative 210 MW thermal unit running VOCCSYS continuous condenser cleaning: backpressure 92 to 71 mbar, TTD 6.4 to 3.0 °C, zero cleaning downtime, +4.1 MW recovered output, 5.4-month simple payback.",
+  author: {
+    "@type": "Organization",
+    name: "Vulcan Industries India",
+    url: "https://voccsys.com/",
+  },
+  about: {
+    "@type": "Product",
+    name: "VOCCSYS — Vulcan Online Condenser Cleaning System",
+  },
+  mainEntityOfPage: "https://voccsys.com/case-study",
+};
 
 const METRICS = [
   { label: "Condenser backpressure", before: "92 mbar", after: "71 mbar", delta: "-23%" },
@@ -12,8 +31,14 @@ const METRICS = [
 ];
 
 export default function CaseStudy() {
+  useSeo({
+    title: "Case Study — VOCCSYS by Vulcan Industries India",
+    description:
+      "Representative 210 MW thermal unit running VOCCSYS continuous condenser cleaning: backpressure 92 to 71 mbar, TTD 6.4 to 3.0 °C, zero cleaning downtime, +4.1 MW recovered output, 5.4-month payback.",
+    path: "/case-study",
+  });
+
   useEffect(() => {
-    document.title = "Case Study — VOCCSYS by Vulcan Industries India";
     window.scrollTo(0, 0);
   }, []);
 
@@ -21,6 +46,7 @@ export default function CaseStudy() {
     <div data-testid="case-study-page" className="relative z-10 bg-[#F2F1ED] min-h-screen">
       <Header />
       <main>
+        <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
         <section className="relative bg-[#F2F1ED] text-[#1F1F22]">
           <div className="max-w-[1100px] mx-auto px-6 lg:px-10 py-10 lg:py-14">
             <Link

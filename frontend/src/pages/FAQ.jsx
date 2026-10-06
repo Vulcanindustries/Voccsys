@@ -3,7 +3,23 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Plus, Minus } from "lucide-react";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
+import useSeo from "@/hooks/useSeo";
 import { FAQ_CATEGORIES, FAQ_UPDATED } from "@/data/faq";
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_CATEGORIES.flatMap((c) =>
+    c.items.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: it.a.map((b) => (b.type === "p" ? b.text : b.items.join(" "))).join(" "),
+      },
+    }))
+  ),
+};
 
 function AnswerBlock({ a }) {
   return (
@@ -76,8 +92,14 @@ function FaqItem({ q, a, openId, setOpenId, id }) {
 export default function FAQ() {
   const [openId, setOpenId] = useState(null);
 
+  useSeo({
+    title: "FAQ — VOCCSYS by Vulcan Industries India",
+    description:
+      "Answers to common procurement, operations and engineering questions about VOCCSYS online condenser tube cleaning — sponge-ball circulation, retrofit, payback, specifications and support.",
+    path: "/faq",
+  });
+
   useEffect(() => {
-    document.title = "FAQ — VOCCSYS by Vulcan Industries India";
     window.scrollTo(0, 0);
   }, []);
 
@@ -87,6 +109,7 @@ export default function FAQ() {
     <div data-testid="faq-page" className="relative z-10 bg-[#F2F1ED] min-h-screen">
       <Header />
       <main>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
         <section className="relative bg-[#F2F1ED] text-[#1F1F22]">
           <div className="max-w-[1100px] mx-auto px-6 lg:px-10 py-10 lg:py-14">
             <Link

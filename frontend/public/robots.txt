@@ -5,6 +5,9 @@ Allow: /
 # Palette preview is an internal design artifact — hide from crawlers
 Disallow: /palette-preview.html
 
+# Admin dashboard is private — never index
+Disallow: /admin
+
 # AI crawlers — explicitly allowed
 User-agent: GPTBot
 Allow: /

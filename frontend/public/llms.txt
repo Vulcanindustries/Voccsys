@@ -49,6 +49,12 @@
 - **What tube materials does it support?** SS 304 / 316L, Titanium, Cu-Ni, Admiralty Brass, and more.
 - **What is the heat transfer rate improvement?** Typically 1–3% continuous recovery at the turbine.
 
+## Pages
+- https://voccsys.com/ — Product overview, 4-stage process, ROI calculator (power + HVAC), technical specifications, industries, contact.
+- https://voccsys.com/case-study — Representative 210 MW thermal unit before/after results (illustrative example): backpressure 92→71 mbar, TTD 6.4→3.0 °C, zero cleaning downtime, +4.1 MW recovered, 5.4-month payback.
+- https://voccsys.com/faq — Full FAQ for procurement, operations and engineering teams.
+- https://voccsys.com/privacy — Privacy policy.
+
 ## Contact
 - **Company:** Vulcan Industries India
 - **Product email:** contactus@vulcanindustriesindia.com
