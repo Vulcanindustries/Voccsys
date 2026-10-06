@@ -7,7 +7,6 @@ import Benefits from "@/components/site/Benefits";
 import Specs from "@/components/site/Specs";
 import Industries from "@/components/site/Industries";
 import Trust from "@/components/site/Trust";
-import CaseStudy from "@/components/site/CaseStudy";
 import ROICalculator from "@/components/site/ROICalculator";
 import Contact from "@/components/site/Contact";
 import Footer from "@/components/site/Footer";
@@ -24,7 +23,6 @@ export default function Landing() {
         <Specs />
         <Industries />
         <Trust />
-        <CaseStudy />
         <ROICalculator />
         <Contact />
       </main>

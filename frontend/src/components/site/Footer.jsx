@@ -40,6 +40,15 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  to="/case-study"
+                  data-testid="footer-casestudy-link"
+                  className="hover:text-[#B45309] transition-colors"
+                >
+                  Case study
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/faq"
                   data-testid="footer-faq-link"
                   className="hover:text-[#B45309] transition-colors"

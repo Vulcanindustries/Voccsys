@@ -65,3 +65,9 @@ Build a landing page for VOCCSYS (Vulcan Online Condenser Cleaning System) — a
 ## Update (2026-07-06) — Footer cleanup
 - Explore column reordered: Questionnaire now above FAQ.
 - Bottom strip: removed duplicate FAQ and Privacy Policy links (now only "VOCCSYS™ · Made in India"). Privacy Policy still linked in the footer Contact column; FAQ still in Explore.
+
+## Update (2026-07-06) — Case Study moved to its own page
+- Landing-page Case Study section removed (old components/site/CaseStudy.jsx deleted; Contact renumbered back to 06).
+- New standalone page /case-study (src/pages/CaseStudy.jsx): headline, illustrative-example card, before/after metrics table, net-effect strip, CTA "Request a proposal" -> /#contact.
+- Footer Explore column: "Case study" link added between Questionnaire and FAQ (data-testid=footer-casestudy-link).
+- Verified: page renders desktop+mobile (no overflow), footer link routes correctly, CTA lands on contact section, landing has no leftover section.
