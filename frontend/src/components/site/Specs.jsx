@@ -13,18 +13,18 @@ const SPEC_GROUPS = [
   {
     title: "Sponge Balls",
     rows: [
-      ["Base material", "Natural rubber / EPDM foam"],
-      ["Ball grades", "Standard, Abrasive, Extra-abrasive"],
-      ["Density", "Marginally < cooling water"],
-      ["Typical life", "1,500 – 3,000 hours per lot"],
+      ["Base material", "Natural rubber"],
+      ["Ball grades", "Standard, Ring Coated, Full Coated"],
+      ["Specific Density", "Marginally < cooling water"],
+      ["Typical life", "200 – 1,200 hours per lot"],
     ],
   },
   {
     title: "System",
     rows: [
       ["Control", "PLC + HMI, remote SCADA-ready"],
-      ["Ball recovery", "100% via mesh Ball Trap / basket type"],
-      ["Piping", "MS / SS with rubber lining, ANSI B16.5 flanges"],
+      ["Ball recovery", "100% via Ball Trap"],
+      ["Piping", "MS / CS / SS, ANSI B16.5 flanges"],
       ["Power supply", "415 V, 3φ, 50 Hz (customisable)"],
     ],
   },
@@ -32,8 +32,8 @@ const SPEC_GROUPS = [
     title: "Compliance",
     rows: [
       ["Design code", "TEMA / HEI aligned"],
-      ["Instrumentation", "ΔP, flow, turbidity, ball count sensors"],
-      ["Documentation", "GA drawings, PID, IOM, O&M manual"],
+      ["Instrumentation", "Delta P and Delta T"],
+      ["Documentation", "GA drawings, PID, O&M manual"],
       ["Warranty", "12 months from commissioning"],
     ],
   },
