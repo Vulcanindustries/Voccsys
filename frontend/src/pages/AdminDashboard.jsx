@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
-import { ArrowLeft, LogOut, Mail, Phone, RefreshCw, Trash2 } from "lucide-react";
+import { ArrowLeft, KeyRound, LogOut, Mail, Phone, RefreshCw, Trash2 } from "lucide-react";
 import { ADMIN_TOKEN_KEY } from "./AdminLogin";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
@@ -27,6 +27,9 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
   const [inquiries, setInquiries] = useState(null);
   const [filter, setFilter] = useState("all");
+  const [showPw, setShowPw] = useState(false);
+  const [pwForm, setPwForm] = useState({ current: "", next: "", confirm: "" });
+  const [pwSaving, setPwSaving] = useState(false);
 
   const authHeaders = useCallback(() => {
     const token = localStorage.getItem(ADMIN_TOKEN_KEY);
@@ -59,6 +62,34 @@ export default function AdminDashboard() {
   const logout = () => {
     localStorage.removeItem(ADMIN_TOKEN_KEY);
     navigate("/admin/login", { replace: true });
+  };
+
+  const changePassword = async (e) => {
+    e.preventDefault();
+    if (pwForm.next.length < 10) {
+      toast.error("New password must be at least 10 characters.");
+      return;
+    }
+    if (pwForm.next !== pwForm.confirm) {
+      toast.error("New passwords do not match.");
+      return;
+    }
+    setPwSaving(true);
+    try {
+      await axios.post(
+        `${API}/auth/change-password`,
+        { current_password: pwForm.current, new_password: pwForm.next },
+        { headers: authHeaders() }
+      );
+      toast.success("Password updated. Use it next time you sign in.");
+      setShowPw(false);
+      setPwForm({ current: "", next: "", confirm: "" });
+    } catch (err) {
+      if (err?.response?.status === 401) return handleAuthError();
+      toast.error(formatApiErrorDetail(err?.response?.data?.detail));
+    } finally {
+      setPwSaving(false);
+    }
   };
 
   const setStatus = async (id, status) => {
@@ -101,7 +132,7 @@ export default function AdminDashboard() {
   return (
     <div data-testid="admin-dashboard" className="min-h-screen bg-[#F2F1ED] text-[#1F1F22]">
       <header className="sticky top-0 z-50 bg-[#F2F1ED] border-b border-[#D9D6CE]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 min-h-16 py-2 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-6 bg-[#B45309]" />
             <span className="font-display font-black tracking-[-0.02em] text-lg">VOCCSYS</span>
@@ -114,6 +145,13 @@ export default function AdminDashboard() {
               className="inline-flex items-center gap-2 px-3 py-2 text-xs font-mono uppercase tracking-widest border border-[#D9D6CE] text-[#3D3F3E] hover:border-[#B45309] hover:text-[#B45309] transition-colors"
             >
               <RefreshCw size={13} /> Refresh
+            </button>
+            <button
+              onClick={() => setShowPw(true)}
+              data-testid="admin-password-button"
+              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-mono uppercase tracking-widest border border-[#D9D6CE] text-[#3D3F3E] hover:border-[#B45309] hover:text-[#B45309] transition-colors"
+            >
+              <KeyRound size={13} /> Password
             </button>
             <button
               onClick={logout}
@@ -251,6 +289,83 @@ export default function AdminDashboard() {
           </div>
         )}
       </main>
+
+      {showPw && (
+        <div
+          className="fixed inset-0 z-[100] bg-[#1F1F22]/50 flex items-center justify-center px-6"
+          onClick={() => setShowPw(false)}
+          data-testid="password-modal-overlay"
+        >
+          <form
+            onSubmit={changePassword}
+            noValidate
+            onClick={(e) => e.stopPropagation()}
+            data-testid="password-change-form"
+            className="w-full max-w-md border border-[#D9D6CE] bg-white p-8"
+          >
+            <div className="v-icon-box w-11 h-11 flex items-center justify-center mb-5">
+              <KeyRound size={17} strokeWidth={1.5} className="text-[#B45309]" />
+            </div>
+            <div className="overline mb-2">Security</div>
+            <h2 className="font-display font-black tracking-[-0.02em] text-2xl text-[#1F1F22]">
+              Change password
+            </h2>
+            <div className="mt-6 space-y-4">
+              <label className="block">
+                <span className="overline no-lead block mb-2">Current password</span>
+                <input
+                  type="password"
+                  className="v-input"
+                  data-testid="pw-current-input"
+                  value={pwForm.current}
+                  onChange={(e) => setPwForm((f) => ({ ...f, current: e.target.value }))}
+                  autoComplete="current-password"
+                />
+              </label>
+              <label className="block">
+                <span className="overline no-lead block mb-2">New password (min 10 chars)</span>
+                <input
+                  type="password"
+                  className="v-input"
+                  data-testid="pw-new-input"
+                  value={pwForm.next}
+                  onChange={(e) => setPwForm((f) => ({ ...f, next: e.target.value }))}
+                  autoComplete="new-password"
+                />
+              </label>
+              <label className="block">
+                <span className="overline no-lead block mb-2">Confirm new password</span>
+                <input
+                  type="password"
+                  className="v-input"
+                  data-testid="pw-confirm-input"
+                  value={pwForm.confirm}
+                  onChange={(e) => setPwForm((f) => ({ ...f, confirm: e.target.value }))}
+                  autoComplete="new-password"
+                />
+              </label>
+            </div>
+            <div className="mt-7 flex gap-3">
+              <button
+                type="submit"
+                disabled={pwSaving}
+                data-testid="pw-save-button"
+                className="v-btn-primary flex-1 justify-center disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {pwSaving ? "Saving…" : "Update password"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowPw(false)}
+                data-testid="pw-cancel-button"
+                className="px-4 py-2 text-xs font-mono uppercase tracking-widest border border-[#D9D6CE] text-[#3D3F3E] hover:border-[#B45309] hover:text-[#B45309] transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

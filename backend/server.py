@@ -21,6 +21,8 @@ from datetime import datetime, timezone, timedelta
 import bcrypt
 import jwt
 import httpx
+import hmac
+import asyncio
 
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
@@ -340,6 +342,23 @@ async def auth_me(admin: dict = Depends(get_current_admin)):
     return admin
 
 
+class ChangePasswordRequest(BaseModel):
+    current_password: str = Field(..., min_length=1, max_length=200)
+    new_password: str = Field(..., min_length=10, max_length=200)
+
+
+@api_router.post("/auth/change-password")
+async def change_password(payload: ChangePasswordRequest, admin: dict = Depends(get_current_admin)):
+    user = await db.users.find_one({"id": admin["id"]})
+    if not user or not verify_password(payload.current_password, user["password_hash"]):
+        raise HTTPException(status_code=400, detail="Current password is incorrect")
+    await db.users.update_one(
+        {"id": admin["id"]},
+        {"$set": {"password_hash": hash_password(payload.new_password)}},
+    )
+    return {"status": "ok"}
+
+
 # ---------- Inquiry routes ----------
 @api_router.post("/inquiries", response_model=Inquiry, status_code=201)
 async def create_inquiry(payload: InquiryCreate):
@@ -390,6 +409,93 @@ async def delete_inquiry(inquiry_id: str, admin: dict = Depends(get_current_admi
         raise HTTPException(status_code=404, detail="Inquiry not found")
 
 
+# ---------- Cron routes ----------
+WEBHOOK_CRON_SECRET = os.environ["WEBHOOK_CRON_SECRET"]
+
+
+def _digest_email_html(open_items: list) -> str:
+    if not open_items:
+        rows = (
+            '<tr><td colspan="4" style="padding:16px 14px;font-family:Arial,sans-serif;'
+            'font-size:13px;color:#6B6E6C">No open enquiries right now. Nice and clear.</td></tr>'
+        )
+    else:
+        rows = ""
+        for it in open_items:
+            created = it.get("created_at", "")
+            if isinstance(created, str):
+                created = created[:10]
+            rows += (
+                '<tr>'
+                f'<td style="padding:8px 14px;font-family:Arial,sans-serif;font-size:13px;color:#1F1F22;border-bottom:1px solid #EAE8E2">{escape(it.get("name", ""))}<br><span style="color:#6B6E6C;font-size:12px">{escape(it.get("company", ""))}</span></td>'
+                f'<td style="padding:8px 14px;font-family:Arial,sans-serif;font-size:13px;color:#1F1F22;border-bottom:1px solid #EAE8E2">{escape(it.get("industry", ""))}</td>'
+                f'<td style="padding:8px 14px;font-family:Arial,sans-serif;font-size:13px;color:#B45309;border-bottom:1px solid #EAE8E2">{escape((it.get("status") or "new").upper())}</td>'
+                f'<td style="padding:8px 14px;font-family:Arial,sans-serif;font-size:12px;color:#6B6E6C;border-bottom:1px solid #EAE8E2">{escape(created)}</td>'
+                '</tr>'
+            )
+    return (
+        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+        'style="background:#F2F1ED;padding:24px"><tr><td>'
+        '<table role="presentation" width="600" cellpadding="0" cellspacing="0" '
+        'style="background:#FFFFFF;border:1px solid #D9D6CE;margin:0 auto">'
+        '<tr><td style="padding:20px 24px;border-bottom:3px solid #B45309">'
+        '<span style="font-family:Arial,sans-serif;font-size:18px;font-weight:bold;color:#1F1F22">'
+        f'Weekly enquiry digest — {len(open_items)} open</span><br>'
+        '<span style="font-family:Arial,sans-serif;font-size:12px;color:#6B6E6C">'
+        'Your Monday-morning summary of open voccsys.com enquiries</span></td></tr>'
+        '<tr><td style="padding:12px 10px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">'
+        '<tr><td style="padding:8px 14px;font-family:Arial,sans-serif;font-size:11px;color:#6B6E6C;letter-spacing:1px">CONTACT</td>'
+        '<td style="padding:8px 14px;font-family:Arial,sans-serif;font-size:11px;color:#6B6E6C;letter-spacing:1px">INDUSTRY</td>'
+        '<td style="padding:8px 14px;font-family:Arial,sans-serif;font-size:11px;color:#6B6E6C;letter-spacing:1px">STATUS</td>'
+        '<td style="padding:8px 14px;font-family:Arial,sans-serif;font-size:11px;color:#6B6E6C;letter-spacing:1px">RECEIVED</td></tr>'
+        + rows +
+        '</table></td></tr>'
+        '<tr><td style="padding:16px 24px;border-top:1px solid #D9D6CE">'
+        '<a href="https://voccsys.com/admin" style="font-family:Arial,sans-serif;font-size:12px;'
+        'color:#B45309">Open the admin dashboard</a>'
+        '<p style="font-family:Arial,sans-serif;font-size:11px;color:#9A9D9B;margin:12px 0 0">'
+        f'Sent by the {escape(EMAIL_FROM_NAME)} website. Automated weekly summary.</p>'
+        '</td></tr></table></td></tr></table>'
+    )
+
+
+async def _run_weekly_digest(run_id: str):
+    try:
+        open_items = await db.inquiries.find(
+            {"status": {"$in": ["new", "contacted"]}}, {"_id": 0}
+        ).sort("created_at", -1).to_list(200)
+        subject = f"VOCCSYS weekly digest — {len(open_items)} open enquir{'y' if len(open_items) == 1 else 'ies'}"
+        email_id = await send_email(to=OWNER_EMAIL, subject=subject, html=_digest_email_html(open_items))
+        await db.cron_runs.update_one({"run_id": run_id}, {"$set": {"email_id": email_id, "done_at": datetime.now(timezone.utc).isoformat()}})
+        logger.info(f"Weekly digest sent (run {run_id}, {len(open_items)} open)")
+    except Exception:
+        logger.exception(f"Weekly digest failed (run {run_id})")
+
+
+@api_router.post("/cron/weekly-digest")
+async def cron_weekly_digest(request: Request):
+    # Cron endpoints must ack 2xx immediately; enqueue/background the actual work.
+    auth = request.headers.get("Authorization", "")
+    token = auth[7:] if auth.startswith("Bearer ") else ""
+    if not token or not hmac.compare_digest(token, WEBHOOK_CRON_SECRET):
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    try:
+        envelope = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+    run_id = (envelope or {}).get("run_id") or request.headers.get("X-Webhook-Id") or str(uuid.uuid4())
+    existing = await db.cron_runs.find_one({"run_id": run_id})
+    if existing:
+        return {"status": "duplicate", "run_id": run_id}
+    await db.cron_runs.insert_one({
+        "run_id": run_id,
+        "schedule_id": (envelope or {}).get("schedule_id", "weekly-enquiry-digest"),
+        "received_at": datetime.now(timezone.utc).isoformat(),
+    })
+    asyncio.create_task(_run_weekly_digest(run_id))
+    return {"status": "accepted", "run_id": run_id}
+
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -409,6 +515,8 @@ async def startup():
     admin_email = os.environ["ADMIN_EMAIL"].lower()
     admin_password = os.environ["ADMIN_PASSWORD"]
     existing = await db.users.find_one({"email": admin_email})
+    # Seed only when missing — the dashboard lets the owner change the password
+    # in-app, so reconciling against env on every restart would silently revert it.
     if existing is None:
         await db.users.insert_one({
             "id": str(uuid.uuid4()),
@@ -419,12 +527,6 @@ async def startup():
             "created_at": datetime.now(timezone.utc).isoformat(),
         })
         logger.info("Admin user seeded")
-    elif not verify_password(admin_password, existing["password_hash"]):
-        await db.users.update_one(
-            {"email": admin_email},
-            {"$set": {"password_hash": hash_password(admin_password)}},
-        )
-        logger.info("Admin password updated from env")
 
 
 @app.on_event("shutdown")

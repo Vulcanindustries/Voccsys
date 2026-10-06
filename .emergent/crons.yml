@@ -1,0 +1,9 @@
+crons:
+  - name: weekly-enquiry-digest
+    description: "Emails the team a Monday 9am IST summary of open contact-form enquiries so none go stale"
+    cron: "0 9 * * 1"
+    timezone: "Asia/Kolkata"
+    endpoint: "{{BASE_URL}}/api/cron/weekly-digest"
+    method: POST
+    # Cron endpoints must ack 2xx immediately; enqueue/background the actual work.
+    enabled: true

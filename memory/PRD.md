@@ -51,3 +51,10 @@ Build a landing page for VOCCSYS (Vulcan Online Condenser Cleaning System) — a
 - **Case Study section**: /app/frontend/src/components/site/CaseStudy.jsx between Trust and ROICalculator. "06 / Case Study", before/after metric table (backpressure, TTD, heat rate, downtime) + dark strip (+4.1 MW, 5.4 months payback). Clearly labelled "Illustrative example — representative 210 MW thermal unit". Contact renumbered to 07.
 - **YouTube embed**: confirmed video u0iLiX1AXN8 shows "Video unavailable" — owner-side YouTube embed setting, NOT a code bug. User must enable "Allow embedding" in YouTube Studio.
 - Tests: /app/backend/tests/test_voccsys_api.py (13 tests, all pass); /app/test_reports/iteration_3.json; /app/auth_testing.md.
+
+## Update (2026-07-06, late) — Password change + Weekly digest cron
+- **In-dashboard password change**: POST /api/auth/change-password (Bearer auth, verifies current password, min 10-char new). Dashboard header "Password" button opens modal (testids: password-change-form, pw-current-input, pw-new-input, pw-confirm-input, pw-save-button). Admin startup seed now only creates when missing — never reconciles hash against env (owner password is authoritative).
+- **Weekly enquiry digest**: .emergent/crons.yml cron "weekly-enquiry-digest", Monday 9:00 Asia/Kolkata -> POST /api/cron/weekly-digest. Route verifies Bearer WEBHOOK_CRON_SECRET (constant-time), idempotent via run_id in db.cron_runs, acks immediately and emails in background (open = new+contacted enquiries). Verified: 401 no/wrong auth, 400 bad body, accepted+duplicate flow, digest email 202 Accepted.
+- **Fix**: admin dashboard mobile (375px) horizontal overflow — header now wraps.
+- Regression: 13/13 backend pytest pass.
+- Deferred by user: real case study data (keeping illustrative example until user sends verified numbers).
