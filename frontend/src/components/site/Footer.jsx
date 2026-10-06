@@ -28,15 +28,6 @@ export default function Footer() {
               <li><a href="/#benefits" className="hover:text-[#B45309] transition-colors">ROI &amp; Benefits</a></li>
               <li><a href="/#specs" className="hover:text-[#B45309] transition-colors">Technical specs</a></li>
               <li>
-                <Link
-                  to="/faq"
-                  data-testid="footer-faq-link"
-                  className="hover:text-[#B45309] transition-colors"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
                 <a
                   href="https://forms.gle/h3nt7HpikzScrfHy6"
                   target="_blank"
@@ -46,6 +37,15 @@ export default function Footer() {
                 >
                   Questionnaire
                 </a>
+              </li>
+              <li>
+                <Link
+                  to="/faq"
+                  data-testid="footer-faq-link"
+                  className="hover:text-[#B45309] transition-colors"
+                >
+                  FAQ
+                </Link>
               </li>
             </ul>
           </div>
@@ -80,20 +80,6 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs text-[#8A8A80]">
           <div className="font-mono">© {year} Vulcan Industries India · All rights reserved.</div>
           <div className="flex items-center gap-6 font-mono">
-            <Link
-              to="/faq"
-              data-testid="footer-faq-link-bottom"
-              className="hover:text-[#B45309] transition-colors"
-            >
-              FAQ
-            </Link>
-            <Link
-              to="/privacy"
-              data-testid="footer-privacy-link-bottom"
-              className="hover:text-[#B45309] transition-colors"
-            >
-              Privacy Policy
-            </Link>
             <span>VOCCSYS™</span>
             <span>Made in India</span>
           </div>

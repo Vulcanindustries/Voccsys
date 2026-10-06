@@ -61,3 +61,7 @@ Build a landing page for VOCCSYS (Vulcan Online Condenser Cleaning System) — a
 
 ## Update (2026-07-06, final) — Questionnaire link
 - Footer Explore column now includes "Questionnaire" (data-testid=footer-questionnaire-link) -> https://forms.gle/h3nt7HpikzScrfHy6, opens in new tab. Verified: click resolves to the live Google Form.
+
+## Update (2026-07-06) — Footer cleanup
+- Explore column reordered: Questionnaire now above FAQ.
+- Bottom strip: removed duplicate FAQ and Privacy Policy links (now only "VOCCSYS™ · Made in India"). Privacy Policy still linked in the footer Contact column; FAQ still in Explore.
