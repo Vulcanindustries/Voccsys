@@ -161,11 +161,12 @@ function SpongeBallDiagram() {
           );
         })}
 
-        {/* External return loop path (visual) */}
+        {/* External return loop path (visual) — kept inside viewBox */}
         <path
-          d={`M ${width - 60} 180 C ${width + 40} 180, ${width + 40} 340, ${width - 60} 340
-              L 80 340
-              C -20 340, -20 180, 80 180`}
+          d={`M ${width - 72} 180
+              C ${width - 10} 180, ${width - 10} 340, ${width - 60} 340
+              L 60 340
+              C 10 340, 10 180, 72 180`}
           fill="none"
           stroke="#C9C6BC"
           strokeWidth="10"
@@ -173,9 +174,10 @@ function SpongeBallDiagram() {
           opacity="0.35"
         />
         <path
-          d={`M ${width - 60} 180 C ${width + 40} 180, ${width + 40} 340, ${width - 60} 340
-              L 80 340
-              C -20 340, -20 180, 80 180`}
+          d={`M ${width - 72} 180
+              C ${width - 10} 180, ${width - 10} 340, ${width - 60} 340
+              L 60 340
+              C 10 340, 10 180, 72 180`}
           fill="none"
           stroke="#B45309"
           strokeOpacity="0.15"
