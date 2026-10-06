@@ -20,7 +20,7 @@ const STEPS = [
   {
     n: "04",
     t: "Recirculate",
-    d: "The recovery pump re-injects the collected balls back to the inlet, forming a closed, continuous cleaning loop.",
+    d: "The Recirculating pump re-injects the collected balls back to the inlet, forming a closed, continuous cleaning loop.",
   },
 ];
 
